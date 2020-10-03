@@ -185,7 +185,9 @@ height = 18.0785
 [sub_resource type="RectangleShape2D" id=36]
 extents = Vector2( 3.59109, 2.8957 )
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="Area2D" groups=[
+"Player",
+]]
 scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
 
@@ -205,4 +207,3 @@ shape = SubResource( 18 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionRange"]
 shape = SubResource( 36 )
-[connection signal="area_entered" from="InteractionRange" to="." method="_on_InteractionRange_area_entered"]
