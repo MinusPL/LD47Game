@@ -9,9 +9,7 @@ export var m_iMoveSpeed = 200
 var m_vLastDirection = Vector2(1,0)
 var m_sDirection = "down"
 
-var colors = [Color(1.0,0.0,0.0,1.0),
-		  Color(0.0,1.0,0.0,1.0),
-		  Color(0.0,0.0,1.0,1.0)]
+var interactionDistance = [Vector2(0,20), Vector2(0,-20), Vector2(-12, 0), Vector2(12, 0)]
 
 
 # Called when the node enters the scene tree for the first time.
@@ -31,6 +29,8 @@ func _process(delta):
 		velocity.y -= 1
 	if Input.is_action_pressed("ui_down"):
 		velocity.y += 1
+	if Input.is_action_just_pressed("ui_accept"):
+		interact()
 
 	if velocity.length() > 0:
 		m_vLastDirection = velocity
@@ -53,13 +53,18 @@ func _process(delta):
 		
 	if normalizedDirection.y >= 0.707:
 		m_sDirection = "down"
+		$InteractionRange.position = interactionDistance[0]
 	elif normalizedDirection.y <= -0.707:
 		m_sDirection = "up"
+		$InteractionRange.position = interactionDistance[1]
 	elif normalizedDirection.x <= -0.707:
 		m_sDirection = "left"
+		$InteractionRange.position = interactionDistance[2]
 	elif normalizedDirection.x >= 0.707:
 		m_sDirection = "right"
+		$InteractionRange.position = interactionDistance[3]
 
-
-	
-
+func interact():
+	var other = $InteractionRange.get_overlapping_areas()
+	if other.size() == 1:
+		Eventbus.emit_signal("interaction", other[0])

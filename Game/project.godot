@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="Ld 47 Game"
 config/icon="res://icon.png"
 
+[autoload]
+
+Eventbus="*res://Scripts/eventbus.gd"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
