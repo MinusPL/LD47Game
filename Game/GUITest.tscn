@@ -41,8 +41,12 @@ anchor_bottom = 1.0
 margin_left = 10.0
 margin_top = 22.6189
 margin_right = -10.0
-margin_bottom = -22.3811
-text = "Example text"
+margin_bottom = -12.0
+mouse_default_cursor_shape = 2
+text = "Example text
+Example text
+Example text
+Example text"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -67,3 +71,46 @@ text = "Test name"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Inventory" type="Control" parent="CanvasLayer"]
+anchor_top = 0.69
+anchor_right = 1.0
+anchor_bottom = 0.8
+margin_left = 40.0
+margin_right = -40.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Inventory"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_default_cursor_shape = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Inventory/Panel"]
+margin_left = 4.37003
+margin_top = 2.74008
+margin_right = 105.37
+margin_bottom = 50.7401
+mouse_filter = 2
+custom_constants/separation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot1" type="TextureRect" parent="CanvasLayer/Inventory/Panel/HBoxContainer"]
+margin_right = 48.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+expand = true
+
+[node name="Slot2" type="TextureRect" parent="CanvasLayer/Inventory/Panel/HBoxContainer"]
+margin_left = 53.0
+margin_right = 101.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+expand = true

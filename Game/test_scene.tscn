@@ -1,13 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUITest.tscn" type="PackedScene" id=2]
 [ext_resource path="res://InteractionObjects/TEST/TEST.tscn" type="PackedScene" id=3]
+[ext_resource path="res://InteractionObjects/TEST2/TEST2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://NPC/Butler.tscn" type="PackedScene" id=5]
 
 [node name="Node" type="Node"]
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 484, 303 )
 
 [node name="TEST" parent="." instance=ExtResource( 3 )]
 position = Vector2( 123, 267.842 )
@@ -28,3 +27,16 @@ flavourText = "yet another testing object, who even needs so many of them?!"
 nameText = "Testing object 3"
 
 [node name="Node2D" parent="." instance=ExtResource( 2 )]
+
+[node name="TEST4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 645.901, 199.982 )
+flavourText = "It contains"
+nameText = "Testing chest"
+
+[node name="Butler" parent="." instance=ExtResource( 5 )]
+position = Vector2( 391.105, 212.925 )
+nameText = "Chujek"
+descText = "Jestem Chujek"
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 484, 303 )
