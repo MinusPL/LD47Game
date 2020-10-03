@@ -5,3 +5,4 @@ extends Node
 
 # List of published signals
 signal interaction(object)
+signal addItem(item_id)

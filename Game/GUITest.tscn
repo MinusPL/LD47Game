@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Fonts/default.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://GUITest.gd" type="Script" id=2]
+[ext_resource path="res://Inventory.gd" type="Script" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.211765, 0.196078, 0.243137, 1 )
@@ -20,8 +21,8 @@ script = ExtResource( 2 )
 anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 40.0
-margin_right = -40.0
+margin_left = 60.0
+margin_right = -60.0
 margin_bottom = -20.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -72,45 +73,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Inventory" type="Control" parent="CanvasLayer"]
+[node name="Inventory" type="Panel" parent="CanvasLayer"]
 anchor_top = 0.69
 anchor_right = 1.0
 anchor_bottom = 0.8
-margin_left = 40.0
-margin_right = -40.0
+margin_left = 60.0
+margin_right = -60.0
 margin_bottom = -10.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel" type="Panel" parent="CanvasLayer/Inventory"]
-anchor_right = 1.0
-anchor_bottom = 1.0
 mouse_default_cursor_shape = 2
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Inventory/Panel"]
-margin_left = 4.37003
-margin_top = 2.74008
-margin_right = 105.37
+[node name="Slots" type="HBoxContainer" parent="CanvasLayer/Inventory"]
+margin_left = 4.0
+margin_top = 4.0
 margin_bottom = 50.7401
 mouse_filter = 2
 custom_constants/separation = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Slot1" type="TextureRect" parent="CanvasLayer/Inventory/Panel/HBoxContainer"]
-margin_right = 48.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 48, 48 )
-expand = true
-
-[node name="Slot2" type="TextureRect" parent="CanvasLayer/Inventory/Panel/HBoxContainer"]
-margin_left = 53.0
-margin_right = 101.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 48, 48 )
-expand = true

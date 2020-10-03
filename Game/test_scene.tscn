@@ -32,6 +32,7 @@ nameText = "Testing object 3"
 position = Vector2( 645.901, 199.982 )
 flavourText = "It contains"
 nameText = "Testing chest"
+item_id = 1
 
 [node name="Butler" parent="." instance=ExtResource( 5 )]
 position = Vector2( 391.105, 212.925 )

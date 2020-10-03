@@ -33,9 +33,6 @@ func _onInteraction(object):
 		$CanvasLayer/DialogueContainer/DialogueText.text = object.getFlavourText()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var inventory = player.getInventory()
-	if inventory.size() > 0:
-		$CanvasLayer/Inventory/Panel/HBoxContainer/Slot1.texture = inventory[0].getTexture()
 	if npc_interaction_state != InteractionState.NONE:
 		process_interaction()
 		
@@ -100,4 +97,5 @@ func process_interaction():
 		player.setInteraction(false)
 		$CanvasLayer/DialogueContainer/DialogueText.text = ""
 		timestamp = OS.get_ticks_msec()
+
 	

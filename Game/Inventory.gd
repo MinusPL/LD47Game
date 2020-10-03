@@ -1,0 +1,37 @@
+extends Panel
+
+const ItemSlot = preload("res://UI/ItemSlot.gd");
+const Items = preload("res://Scripts/Item/Items.gd")
+const Item = preload("res://Scripts/Item/Item.gd")
+
+const MAX_SLOTS = 17;
+
+var slotList = Array();
+
+func _ready():
+	Eventbus.connect("addItem", self, "_onAddItem")
+	var slots = get_node("Slots");
+	for _i in range(MAX_SLOTS):
+		var slot = ItemSlot.new();
+		#slot.connect("mouse_entered", self, "mouse_enter_slot", [slot]);
+		#slot.connect("mouse_exited", self, "mouse_exit_slot", [slot]);
+		#slot.connect("gui_input", self, "slot_gui_input", [slot]);
+		slotList.append(slot);
+		slots.add_child(slot);
+
+func getFreeSlot():
+	for slot in slotList:
+		if !slot.item:
+			return slot;
+
+func addItem(id):
+	var slot = getFreeSlot();
+	if slot:
+		var item = Items.itemDictionary[id];
+		slot.setItem(Item.new(item.itemName, item.texture, slot))
+
+func _onAddItem(item):
+	addItem(item)
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
