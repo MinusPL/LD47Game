@@ -13,8 +13,6 @@ var lock_movment = false
 
 var interactionDistance = [Vector2(0,40), Vector2(0,-40), Vector2(-24, 0), Vector2(24, 0)]
 
-var inventory = []
-
 func getInitialPosition():
 	return initialPosition
 
@@ -88,9 +86,8 @@ func interact():
 		if other[0].is_in_group("Interactable"):
 			Eventbus.emit_signal("interaction", other[0])
 			if other[0].is_in_group("Chest"):
-				var items = other[0].getItems()
-				for item in items:
-					inventory.append(item)
-
-func getInventory():
-	return inventory
+				if not other[0].isItemLooted():
+					other[0].setItemLooted(true)
+					var items = other[0].getItems()
+					for item in items:
+						Eventbus.emit_signal("addItem", item)

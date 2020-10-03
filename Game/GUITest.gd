@@ -21,8 +21,8 @@ func _onInteraction(object):
 		$CanvasLayer/DialogueContainer/NameBackground/Label.text = object.getName()
 		$CanvasLayer/DialogueContainer/DialogueText.text = object.getFlavourText()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var inventory = player.getInventory()
-	if inventory.size() > 0:
-		$CanvasLayer/Inventory/Panel/HBoxContainer/Slot1.texture = inventory[0].getTexture()
+#func _process(delta):
+#	var inventory = player.getInventory()
+#	if inventory.size() > 0:
+#		$CanvasLayer/Inventory/Panel/HBoxContainer/Slot1.texture = inventory[0].getTexture()
 	
