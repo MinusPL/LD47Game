@@ -10,6 +10,7 @@ var m_vLastDirection = Vector2(0,1)
 var m_sDirection = "down"
 var initialPosition = Vector2(0,0)
 var lock_movment = false
+var interaction = false
 
 var interactionDistance = [Vector2(0,40), Vector2(0,-40), Vector2(-24, 0), Vector2(24, 0)]
 
@@ -20,6 +21,9 @@ func teleport(newPosition: Vector2, direction: String):
 	position = newPosition
 	m_sDirection = direction
 	lock_movment = true
+	
+func setInteraction(value: bool):
+	interaction = value
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,20 +36,21 @@ func _ready():
 func _process(delta):
 	var velocity = Vector2()
 
-	if !lock_movment:
-		if Input.is_action_pressed("ui_right"):
-			velocity.x += 1
-		if Input.is_action_pressed("ui_left"):
-			velocity.x -= 1
-		if Input.is_action_pressed("ui_up"):
-			velocity.y -= 1
-		if Input.is_action_pressed("ui_down"):
-			velocity.y += 1
-	else:
-		if !(Input.is_action_pressed("ui_right") ||  Input.is_action_pressed("ui_left") || Input.is_action_pressed("ui_up") || Input.is_action_pressed("ui_down")):
-			lock_movment = false
-	if Input.is_action_just_pressed("ui_accept"):
-		interact()
+	if !interaction:
+		if !lock_movment:
+			if Input.is_action_pressed("ui_right"):
+				velocity.x += 1
+			if Input.is_action_pressed("ui_left"):
+				velocity.x -= 1
+			if Input.is_action_pressed("ui_up"):
+				velocity.y -= 1
+			if Input.is_action_pressed("ui_down"):
+				velocity.y += 1
+		else:
+			if !(Input.is_action_pressed("ui_right") ||  Input.is_action_pressed("ui_left") || Input.is_action_pressed("ui_up") || Input.is_action_pressed("ui_down")):
+				lock_movment = false
+		if Input.is_action_just_pressed("ui_accept"):
+			interact()
 
 	if velocity.length() > 0:
 		m_vLastDirection = velocity

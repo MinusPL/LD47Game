@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GUITest.tscn" type="PackedScene" id=2]
+[ext_resource path="res://InteractionObjects/TEST/TEST.tscn" type="PackedScene" id=3]
+[ext_resource path="res://InteractionObjects/TEST2/TEST2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://NPC/Butler.tscn" type="PackedScene" id=5]
+
+[node name="Node" type="Node"]
+
+[node name="TEST" parent="." instance=ExtResource( 3 )]
+position = Vector2( 123, 267.842 )
+scale = Vector2( 2, 2 )
+flavourText = "Testing object 1 description text"
+nameText = "TESTING OBJECT 1"
+
+[node name="TEST2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 860, 129.842 )
+scale = Vector2( 2, 2 )
+flavourText = "This object was used to some testing. It is useless now."
+nameText = "Test Object 2"
+
+[node name="TEST3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 317, 51.8419 )
+scale = Vector2( 2, 2 )
+flavourText = "yet another testing object, who even needs so many of them?!"
+nameText = "Testing object 3"
+
+[node name="Node2D" parent="." instance=ExtResource( 2 )]
+
+[node name="TEST4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 645.901, 199.982 )
+flavourText = "It contains"
+nameText = "Testing chest"
+
+[node name="Butler" parent="." instance=ExtResource( 5 )]
+position = Vector2( 391.105, 212.925 )
+nameText = "Chujek"
+descText = "Jestem Chujek"
+questions = {
+"Dupa": "Jestem Dupa",
+"Więcej niż jedno zwierze to.": "Lama."
+}
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 484, 303 )
