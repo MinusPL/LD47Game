@@ -1,23 +1,20 @@
 extends Area2D
 
-signal interaction
 
-export var flavourText = ""
-export var nameText = ""
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
+export var itemName = "Normal Knife"
+export var desc = ""
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	pass # Replace with function body.
 
-func getFlavourText():
-	return flavourText
-	
 func getName():
-	return nameText
+	return itemName
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
