@@ -59,12 +59,11 @@ func process_teleport(area):
 #	if drawRect:
 		# print("DUPA")
 #		draw_rect(drawRect, Color("0000ff"), true)
+	
+	
+func _on_Teleporter_body_entered(body):
+	monitoringObj = body
 
-func _on_Teleporter_area_shape_entered(area_id, area, area_shape, self_shape):
-	monitoringObj = area
-	# ableToDraw = true
-	
-	
-func _on_Teleporter_area_shape_exited(area_id, area, area_shape, self_shape):
+
+func _on_Teleporter_body_exited(body):
 	monitoringObj = null # Replace with function body.
-	# ableToDraw = false

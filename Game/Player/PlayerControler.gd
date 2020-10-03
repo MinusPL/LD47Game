@@ -30,8 +30,6 @@ func _ready():
 	initialPosition = position
 	pass # Replace with function body.
 
-var interactionDistance = [Vector2(0,20), Vector2(0,-20), Vector2(-12, 0), Vector2(12, 0)]
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var velocity = Vector2()
