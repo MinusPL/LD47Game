@@ -6,10 +6,11 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16.0232, 16.2429 )
 
-[node name="TEST" type="Area2D" groups=[
+[node name="TEST" type="KinematicBody2D" groups=[
 "Interactable",
 ]]
 position = Vector2( 0, 0.420925 )
+motion/sync_to_physics = true
 script = ExtResource( 2 )
 flavourText = "TO JEST TEKST"
 

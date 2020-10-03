@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 
 # Declare member variables here. Examples:
@@ -9,8 +9,9 @@ export var m_iMoveSpeed = 200
 var m_vLastDirection = Vector2(1,0)
 var m_sDirection = "down"
 
-var interactionDistance = [Vector2(0,20), Vector2(0,-20), Vector2(-12, 0), Vector2(12, 0)]
+var interactionDistance = [Vector2(0,40), Vector2(0,-40), Vector2(-24, 0), Vector2(24, 0)]
 
+var inventory = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,7 +48,7 @@ func _process(delta):
 		$AnimatedSprite.frame = 0
 		$Coat.frame = 0
 
-	position += velocity * delta
+	move_and_collide(velocity * delta)
 
 	var normalizedDirection = m_vLastDirection.normalized()
 		
@@ -65,6 +66,15 @@ func _process(delta):
 		$InteractionRange.position = interactionDistance[3]
 
 func interact():
-	var other = $InteractionRange.get_overlapping_areas()
+	var other = $InteractionRange.get_overlapping_bodies()
+	print(other)
 	if other.size() == 1:
-		Eventbus.emit_signal("interaction", other[0])
+		if other[0].is_in_group("Interactable"):
+			Eventbus.emit_signal("interaction", other[0])
+			if other[0].is_in_group("Chest"):
+				var items = other[0].getItems()
+				for item in items:
+					inventory.append(item)
+
+func getInventory():
+	return inventory

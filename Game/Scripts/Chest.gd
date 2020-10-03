@@ -18,6 +18,9 @@ func getFlavourText():
 	
 func getName():
 	return flavourText + " " + items[0].getName()
+	
+func getItems():
+	return items
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

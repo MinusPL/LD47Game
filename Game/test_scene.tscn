@@ -4,12 +4,9 @@
 [ext_resource path="res://GUITest.tscn" type="PackedScene" id=2]
 [ext_resource path="res://InteractionObjects/TEST/TEST.tscn" type="PackedScene" id=3]
 [ext_resource path="res://InteractionObjects/TEST2/TEST2.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Items/Item.tscn" type="PackedScene" id=5]
+[ext_resource path="res://NPC/Butler.tscn" type="PackedScene" id=5]
 
 [node name="Node" type="Node"]
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 484, 303 )
 
 [node name="TEST" parent="." instance=ExtResource( 3 )]
 position = Vector2( 123, 267.842 )
@@ -35,4 +32,11 @@ nameText = "Testing object 3"
 position = Vector2( 645.901, 199.982 )
 flavourText = "It contains"
 nameText = "Testing chest"
-item = ExtResource( 5 )
+
+[node name="Butler" parent="." instance=ExtResource( 5 )]
+position = Vector2( 391.105, 212.925 )
+nameText = "Chujek"
+descText = "Jestem Chujek"
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 484, 303 )

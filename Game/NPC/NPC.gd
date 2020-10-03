@@ -1,9 +1,8 @@
 extends KinematicBody2D
 
-signal interaction
-
-export var flavourText = ""
 export var nameText = ""
+export var descText = ""
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -11,14 +10,13 @@ export var nameText = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	pass # Replace with function body.
 
-func getFlavourText():
-	return flavourText
-	
 func getName():
 	return nameText
-
+	
+func getDesc():
+	return descText
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
