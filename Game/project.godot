@@ -19,6 +19,10 @@ config/name="Ld 47 Game"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Eventbus="*res://Scripts/eventbus.gd"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
