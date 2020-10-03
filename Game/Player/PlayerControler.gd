@@ -23,7 +23,7 @@ func teleport(newPosition: Vector2, direction: String):
 func _ready():
 	randomize()
 	$Coat.modulate = Color(randf(),randf(),randf())
-  initialPosition = position
+	initialPosition = position
 	pass # Replace with function body.
 
 var interactionDistance = [Vector2(0,20), Vector2(0,-20), Vector2(-12, 0), Vector2(12, 0)]
@@ -44,7 +44,7 @@ func _process(delta):
 	else:
 		if !(Input.is_action_pressed("ui_right") ||  Input.is_action_pressed("ui_left") || Input.is_action_pressed("ui_up") || Input.is_action_pressed("ui_down")):
 			lock_movment = false
-  if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept"):
 		interact()
 
 	if velocity.length() > 0:
