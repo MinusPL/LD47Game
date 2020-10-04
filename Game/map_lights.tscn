@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://StormController.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Tilesets/Tileset.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Textures/light.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Sounds/sfx/thunder1.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Sounds/sfx/thunder2.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Sounds/sfx/rain.ogg" type="AudioStream" id=6]
 
 [sub_resource type="TileSet" id=1]
 14/name = "Tileset.png 14"
@@ -1300,3 +1301,101 @@ bus = "Sounds"
 
 [node name="thunder1" type="AudioStreamPlayer" parent="StormController"]
 stream = ExtResource( 5 )
+
+[node name="Rain" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Rain"]
+position = Vector2( 400.047, 1.02982 )
+stream = ExtResource( 6 )
+volume_db = -6.0
+autoplay = true
+max_distance = 120.0
+bus = "Sounds"
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="Rain"]
+position = Vector2( 503.991, 1.56015 )
+stream = ExtResource( 6 )
+volume_db = -6.0
+autoplay = true
+max_distance = 120.0
+bus = "Sounds"
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="Rain"]
+position = Vector2( 615.714, 1.91371 )
+stream = ExtResource( 6 )
+volume_db = -6.0
+autoplay = true
+max_distance = 120.0
+bus = "Sounds"
+
+[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="Rain"]
+position = Vector2( 720.189, 1.91371 )
+stream = ExtResource( 6 )
+volume_db = -6.0
+autoplay = true
+max_distance = 120.0
+bus = "Sounds"
+
+[node name="AudioStreamPlayer2D5" type="AudioStreamPlayer2D" parent="Rain"]
+position = Vector2( 687.552, 990.83 )
+stream = ExtResource( 6 )
+volume_db = -6.0
+autoplay = true
+max_distance = 120.0
+bus = "Sounds"
+
+[node name="AudioStreamPlayer2D6" type="AudioStreamPlayer2D" parent="Rain"]
+position = Vector2( 592.423, 991.672 )
+stream = ExtResource( 6 )
+volume_db = -6.0
+autoplay = true
+max_distance = 120.0
+bus = "Sounds"
+
+[node name="AudioStreamPlayer2D7" type="AudioStreamPlayer2D" parent="Rain"]
+position = Vector2( -398.976, 766.113 )
+stream = ExtResource( 6 )
+volume_db = -6.0
+autoplay = true
+max_distance = 120.0
+bus = "Sounds"
+
+[node name="AudioStreamPlayer2D8" type="AudioStreamPlayer2D" parent="Rain"]
+position = Vector2( -495.807, 766.708 )
+stream = ExtResource( 6 )
+volume_db = -6.0
+autoplay = true
+max_distance = 120.0
+bus = "Sounds"
+
+[node name="AudioStreamPlayer2D9" type="AudioStreamPlayer2D" parent="Rain"]
+position = Vector2( -367.67, -222.991 )
+stream = ExtResource( 6 )
+volume_db = -6.0
+autoplay = true
+max_distance = 120.0
+bus = "Sounds"
+
+[node name="AudioStreamPlayer2D10" type="AudioStreamPlayer2D" parent="Rain"]
+position = Vector2( -472.362, -221.519 )
+stream = ExtResource( 6 )
+volume_db = -6.0
+autoplay = true
+max_distance = 120.0
+bus = "Sounds"
+
+[node name="AudioStreamPlayer2D11" type="AudioStreamPlayer2D" parent="Rain"]
+position = Vector2( -583.991, -221.519 )
+stream = ExtResource( 6 )
+volume_db = -6.0
+autoplay = true
+max_distance = 120.0
+bus = "Sounds"
+
+[node name="AudioStreamPlayer2D12" type="AudioStreamPlayer2D" parent="Rain"]
+position = Vector2( -688.682, -221.519 )
+stream = ExtResource( 6 )
+volume_db = -6.0
+autoplay = true
+max_distance = 120.0
+bus = "Sounds"
