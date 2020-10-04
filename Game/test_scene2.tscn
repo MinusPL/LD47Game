@@ -340,3 +340,4 @@ zoom = Vector2( 0.25, 0.25 )
 stream = ExtResource( 12 )
 volume_db = -10.0
 autoplay = true
+bus = "Music"

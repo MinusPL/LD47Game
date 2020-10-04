@@ -1,21 +1,35 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Teleporter/Teleporter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
+[ext_resource path="res://map_lights.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Sounds/Socapex - Dark Ambiance - Mastered.ogg" type="AudioStream" id=5]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="Teleporter" parent="." instance=ExtResource( 2 )]
-position = Vector2( 248.359, 107.995 )
-scale = Vector2( 100, 100 )
-teleportPlace = NodePath("../Teleporter2")
+[node name="Node2D" parent="." instance=ExtResource( 4 )]
 
 [node name="Teleporter2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 574.686, 68.6084 )
+position = Vector2( -373.533, 279.442 )
 scale = Vector2( 100, 100 )
 teleportPlace = NodePath("../Teleporter")
 
+[node name="Teleporter" parent="." instance=ExtResource( 2 )]
+position = Vector2( 733.114, 369.114 )
+scale = Vector2( 100, 100 )
+teleportDirection = 1
+teleportPlace = NodePath("../Teleporter2")
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 17, 35 )
+position = Vector2( 424.149, 957.224 )
+m_iMoveSpeed = 100
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+zoom = Vector2( 0.25, 0.25 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
