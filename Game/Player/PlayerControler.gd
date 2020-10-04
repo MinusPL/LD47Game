@@ -94,14 +94,14 @@ func _process(delta):
 		$InteractionRange.position = interactionDistance[3]
 
 func interact():
-	var other = $InteractionRange.get_overlapping_bodies()
+	var other = $InteractionRange.get_overlapping_areas() + $InteractionRange.get_overlapping_bodies()
 	print(other)
-	if other.size() == 1:
-		if other[0].is_in_group("Interactable"):
-			Eventbus.emit_signal("interaction", other[0])
-			if other[0].is_in_group("Chest"):
-				if not other[0].isItemLooted():
-					other[0].setItemLooted(true)
-					var items = other[0].getItems()
+	if other.size() >= 1:
+		if other[0].get_parent().is_in_group("Interactable"):
+			Eventbus.emit_signal("interaction", other[0].get_parent())
+			if other[0].get_parent().is_in_group("Chest"):
+				if not other[0].get_parent().isItemLooted():
+					other[0].get_parent().setItemLooted(true)
+					var items = other[0].get_parent().getItems()
 					for item in items:
 						Eventbus.emit_signal("addItem", item)

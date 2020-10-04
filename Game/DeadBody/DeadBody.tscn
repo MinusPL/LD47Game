@@ -7,7 +7,7 @@
 [sub_resource type="CapsuleShape2D" id=1]
 height = 1.75
 
-[node name="DeadBody" type="KinematicBody2D" groups=[
+[node name="DeadBody" type="Node2D" groups=[
 "Chest",
 "Interactable",
 ]]
@@ -19,6 +19,8 @@ texture = ExtResource( 3 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -0.125, 6.25 )
 shape = SubResource( 1 )

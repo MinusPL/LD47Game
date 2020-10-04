@@ -32,7 +32,7 @@ nameText = "Testing object 3"
 [node name="Node2D" parent="." instance=ExtResource( 2 )]
 
 [node name="TEST4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 645.901, 199.982 )
+position = Vector2( 616.705, 196.044 )
 flavourText = "It contains"
 nameText = "Testing chest"
 

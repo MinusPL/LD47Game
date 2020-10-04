@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Node2D
 
 export var nameText = ""
 export var descText = ""

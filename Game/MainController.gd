@@ -31,6 +31,7 @@ func killPlayer():
 	deadbody.position = get_node(player).position
 	deadBodies.append(deadbody)
 	add_child(deadbody)
+	deadbody.z_index = get_node(player).z_index - 1
 	deadbody.clearChest()
 	deadbody.insertKnife(knifeId)
 	deadbody.setCoatColor(get_node(player).getCoatColor())
