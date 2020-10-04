@@ -16,6 +16,7 @@ var first_click = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#OS.window_borderless = true
 	pass # Replace with function body.
 
 
