@@ -23,12 +23,29 @@ func getFreeSlot():
 	for slot in slotList:
 		if !slot.item:
 			return slot;
+			
+func getFreeSlotsCount():
+	var count = 0
+	for slot in slotList:
+		if !slot.item:
+			count += 1
+	return count
 
 func addItem(id):
 	var slot = getFreeSlot();
 	if slot:
 		var item = Items.itemDictionary[id];
-		slot.setItem(Item.new(item.itemName, item.texture, slot))
+		slot.setItem(Item.new(id, item.itemName, item.texture, slot))
+		
+func removeAllItems():
+	for slot in slotList:
+		slot.removeItem()
+		
+func getItemsSlots():
+	return slotList
+	
+func getItemSlot(index):
+	return slotList[index]
 
 func _onAddItem(item):
 	addItem(item)
