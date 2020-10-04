@@ -1,6 +1,6 @@
 extends Node
 
-enum InteractionState {NONE, MAIN, QUESTION, INVENTORY, ACCUSATION, EXIT, ANSWER, INVENTORY_ANSWER}
+enum InteractionState {NONE, MAIN, QUESTION, INVENTORY, ACCUSATION, EXIT, ANSWER, INVENTORY_ANSWER, DESCRIPTION}
 
 var player = null
 
@@ -24,7 +24,7 @@ func _onInteraction(object):
 		if (OS.get_ticks_msec() - timestamp) > 100:
 			$CanvasLayer/DialogueContainer/NameBackground/Label.text = object.getName()
 			$CanvasLayer/DialogueContainer/DialogueText.text = object.getDesc()
-			npc_interaction_state = InteractionState.MAIN
+			npc_interaction_state = InteractionState.DESCRIPTION
 			current_interactable = object
 			player.setInteraction(true)
 			timestamp = OS.get_ticks_msec()
@@ -128,5 +128,10 @@ func process_interaction():
 		player.setInteraction(false)
 		$CanvasLayer/DialogueContainer/DialogueText.text = ""
 		timestamp = OS.get_ticks_msec()
+	elif npc_interaction_state == InteractionState.DESCRIPTION:
+		if (OS.get_ticks_msec() - timestamp) > 100:
+			if Input.is_action_pressed("ui_accept"):
+				timestamp = OS.get_ticks_msec()
+				npc_interaction_state = InteractionState.MAIN
 
 	
