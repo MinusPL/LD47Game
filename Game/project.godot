@@ -16,12 +16,13 @@ _global_script_class_icons={
 [application]
 
 config/name="hudunnit"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://MainMenu/MainMenuScene.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Eventbus="*res://Scripts/eventbus.gd"
+Globals="*res://Scripts/globals.gd"
 
 [display]
 

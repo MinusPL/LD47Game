@@ -1011,16 +1011,16 @@
 [sub_resource type="OccluderPolygon2D" id=5]
 polygon = PoolVector2Array( -405.344, -254.969, -324.72, -254.861, -324.629, -286.915, -366.19, -296.927, -405.187, -286.625 )
 
-[sub_resource type="OccluderPolygon2D" id=9]
+[sub_resource type="OccluderPolygon2D" id=6]
 polygon = PoolVector2Array( -405.344, -254.969, -50.3617, -254.882, -324.629, -286.915, -366.19, -296.927, -405.187, -286.625 )
 
-[sub_resource type="OccluderPolygon2D" id=6]
+[sub_resource type="OccluderPolygon2D" id=7]
 polygon = PoolVector2Array( -405.113, -255.11, -316.994, -255.11, -316.862, -286.858, -405.126, -286.749 )
 
-[sub_resource type="OccluderPolygon2D" id=7]
+[sub_resource type="OccluderPolygon2D" id=8]
 polygon = PoolVector2Array( -672, 790, -672, 765, -800, 765, -800, 790 )
 
-[sub_resource type="OccluderPolygon2D" id=8]
+[sub_resource type="OccluderPolygon2D" id=9]
 polygon = PoolVector2Array( -704.452, 789.779, -704.14, 764.983, -768.128, 764.988, -768.276, 789.47 )
 
 [node name="Node2D" type="Node2D"]
@@ -1148,31 +1148,31 @@ occluder = SubResource( 5 )
 
 [node name="LightOccluder2D10" type="LightOccluder2D" parent="Storm"]
 position = Vector2( -296.296, 15.2207 )
-occluder = SubResource( 9 )
+occluder = SubResource( 6 )
 
 [node name="LightOccluder2D4" type="LightOccluder2D" parent="Storm"]
 position = Vector2( -167.007, 46.9739 )
-occluder = SubResource( 6 )
+occluder = SubResource( 7 )
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="Storm"]
 position = Vector2( 49.0164, 46.9868 )
-occluder = SubResource( 6 )
+occluder = SubResource( 7 )
 
 [node name="LightOccluder2D6" type="LightOccluder2D" parent="Storm"]
 position = Vector2( 0.0834351, 0 )
-occluder = SubResource( 7 )
+occluder = SubResource( 8 )
 
 [node name="LightOccluder2D7" type="LightOccluder2D" parent="Storm"]
 position = Vector2( 160.092, -0.176025 )
-occluder = SubResource( 7 )
+occluder = SubResource( 8 )
 
 [node name="LightOccluder2D8" type="LightOccluder2D" parent="Storm"]
 position = Vector2( 416.044, 0.0629883 )
-occluder = SubResource( 7 )
+occluder = SubResource( 8 )
 
 [node name="LightOccluder2D9" type="LightOccluder2D" parent="Storm"]
 position = Vector2( 288.149, 0.00970459 )
-occluder = SubResource( 8 )
+occluder = SubResource( 9 )
 
 [node name="Storm2" type="Node2D" parent="."]
 position = Vector2( 1088, 224 )
@@ -1221,17 +1221,6 @@ shadow_enabled = true
 shadow_filter = 5
 shadow_filter_smooth = 12.0
 
-[node name="lightning5" type="Light2D" parent="Storm2" groups=[
-"lightning",
-]]
-position = Vector2( -656, 777 )
-texture = ExtResource( 3 )
-texture_scale = 0.25
-mode = 2
-shadow_enabled = true
-shadow_filter = 5
-shadow_filter_smooth = 12.0
-
 [node name="lightning6" type="Light2D" parent="Storm2" groups=[
 "lightning",
 ]]
@@ -1268,31 +1257,31 @@ occluder = SubResource( 5 )
 
 [node name="LightOccluder2D10" type="LightOccluder2D" parent="Storm2"]
 position = Vector2( -296.296, 15.2207 )
-occluder = SubResource( 9 )
+occluder = SubResource( 6 )
 
 [node name="LightOccluder2D4" type="LightOccluder2D" parent="Storm2"]
 position = Vector2( -167.007, 46.9739 )
-occluder = SubResource( 6 )
+occluder = SubResource( 7 )
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="Storm2"]
 position = Vector2( 49.0164, 46.9868 )
-occluder = SubResource( 6 )
+occluder = SubResource( 7 )
 
 [node name="LightOccluder2D6" type="LightOccluder2D" parent="Storm2"]
 position = Vector2( 0.0834351, 0 )
-occluder = SubResource( 7 )
+occluder = SubResource( 8 )
 
 [node name="LightOccluder2D7" type="LightOccluder2D" parent="Storm2"]
 position = Vector2( 160.092, -0.176025 )
-occluder = SubResource( 7 )
+occluder = SubResource( 8 )
 
 [node name="LightOccluder2D8" type="LightOccluder2D" parent="Storm2"]
 position = Vector2( 416.044, 0.0629883 )
-occluder = SubResource( 7 )
+occluder = SubResource( 8 )
 
 [node name="LightOccluder2D9" type="LightOccluder2D" parent="Storm2"]
 position = Vector2( 288.149, 0.00970459 )
-occluder = SubResource( 8 )
+occluder = SubResource( 9 )
 
 [node name="AmbientLightning" type="CanvasModulate" parent="."]
 position = Vector2( -155.564, 442.649 )
