@@ -57,9 +57,6 @@ func _process(delta):
 				lock_movment = false
 		if Input.is_action_just_pressed("ui_accept"):
 			interact()
-		if Input.is_action_just_pressed("ui_cancel"):
-			get_node("..").killPlayer()
-			get_node("..").resetGame()
 
 	if velocity.length() > 0:
 		m_vLastDirection = velocity
