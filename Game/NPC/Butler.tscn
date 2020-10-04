@@ -48,11 +48,13 @@ radius = 7.04559
 height = 14.5704
 
 [node name="Butler" instance=ExtResource( 1 )]
-scale = Vector2( 2, 2 )
+nameText = "Butler"
+descText = "I am sus!"
 
 [node name="AnimatedSprite" parent="." index="0"]
 frames = SubResource( 9 )
-frame = 7
+frame = 1
+speed_scale = 0.5
 playing = true
 
 [node name="CollisionShape2D" parent="." index="1"]

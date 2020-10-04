@@ -28,6 +28,7 @@ func _onInteraction(object):
 			current_interactable = object
 			player.setInteraction(true)
 			timestamp = OS.get_ticks_msec()
+			$CanvasLayer/DialogueContainer.show()
 	else:
 		$CanvasLayer/DialogueContainer/NameBackground/Label.text = object.getName()
 		$CanvasLayer/DialogueContainer/DialogueText.text = object.getFlavourText()
@@ -95,6 +96,7 @@ func process_interaction():
 		current_interactable = null
 		npc_interaction_state = InteractionState.NONE
 		player.setInteraction(false)
+		$CanvasLayer/DialogueContainer.hide()
 		$CanvasLayer/DialogueContainer/DialogueText.text = ""
 		timestamp = OS.get_ticks_msec()
 
