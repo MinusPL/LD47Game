@@ -5,15 +5,15 @@ enum MenuOptions {NONE, NEW_GAME, OPTIONS, CREDITS, EXIT}
 enum OptionsOptions {TOGGLE, SOUND_VOLUME, MUSIC_VOLUME}
 
 var highlighted_menu_option = 0
+export var movementSpeed = 20
+export var maxMovement = 60
+var movementDir = 0
 var secondary_highlighted_menu_option = 0
 var selected_menu_option = MenuOptions.NONE
 var timestamp = OS.get_ticks_msec()
 var key_delay = 2000
 var first_click = true
 
-export var sound_volume = 50
-export var music_volume = 50
-export var play_audio = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -23,6 +23,19 @@ func _ready():
 func _process(delta):
 	var main_children = $MenuContainer/VBoxContainer/Options.get_children()
 	var options_children = $MenuContainer/CenterContainer/OptionsOptions.get_children()
+	
+	var movement = Vector2()
+	if movementDir == 0:
+		movement.y = movementSpeed*delta
+	else:
+		movement.y = -movementSpeed*delta
+	rect_position += movement
+	
+	if rect_position.y >= maxMovement:
+		movementDir = 1
+	
+	if rect_position.y <= -maxMovement:
+		movementDir = 0
 	
 	for i in range(4):
 		if (highlighted_menu_option - i) >= 0:
@@ -54,11 +67,12 @@ func _process(delta):
 			selected_menu_option = highlighted_menu_option + 1
 	elif selected_menu_option == MenuOptions.NEW_GAME:
 		selected_menu_option = MenuOptions.NONE
+		get_tree().change_scene("res://Main.tscn")
 	elif selected_menu_option == MenuOptions.OPTIONS:
 		$MenuContainer/CenterContainer/OptionsOptions.visible = true
-		$MenuContainer/CenterContainer/OptionsOptions/HBoxContainer/SoundToggleValue.text = "On" if play_audio else "Off"
-		$MenuContainer/CenterContainer/OptionsOptions/HBoxContainer2/SoundVolumeValue.text = "%d" % sound_volume
-		$MenuContainer/CenterContainer/OptionsOptions/HBoxContainer3/MusicVolumeValue.text = "%d" % music_volume
+		$MenuContainer/CenterContainer/OptionsOptions/HBoxContainer/SoundToggleValue.text = "On" if Globals.play_audio else "Off"
+		$MenuContainer/CenterContainer/OptionsOptions/HBoxContainer2/SoundVolumeValue.text = "%d" % Globals.sound_volume
+		$MenuContainer/CenterContainer/OptionsOptions/HBoxContainer3/MusicVolumeValue.text = "%d" % Globals.music_volume
 		if Input.is_action_just_pressed("ui_up"):
 			if secondary_highlighted_menu_option > 0:
 				secondary_highlighted_menu_option -= 1
@@ -70,13 +84,16 @@ func _process(delta):
 		if Input.is_action_pressed("ui_left"):
 			if OS.get_ticks_msec() - timestamp > key_delay:
 				if secondary_highlighted_menu_option == OptionsOptions.TOGGLE:
-					play_audio = !play_audio
+					Globals.play_audio = !Globals.play_audio
+					AudioServer.set_bus_mute(0, !Globals.play_audio)
 				if secondary_highlighted_menu_option == OptionsOptions.MUSIC_VOLUME:
-					if music_volume > 0:
-						music_volume -= 1
+					if Globals.music_volume > 0:
+						Globals.music_volume -= 1
+						AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear2db(Globals.music_volume/100.0))
 				if secondary_highlighted_menu_option == OptionsOptions.SOUND_VOLUME:
-					if sound_volume > 0:
-						sound_volume -= 1
+					if Globals.sound_volume > 0:
+						Globals.sound_volume -= 1
+						AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sounds"), linear2db(Globals.sound_volume/100.0))
 				if first_click:
 					key_delay = 500
 					first_click = false
@@ -86,13 +103,16 @@ func _process(delta):
 		elif Input.is_action_pressed("ui_right"):
 			if OS.get_ticks_msec() - timestamp > key_delay:
 				if secondary_highlighted_menu_option == OptionsOptions.TOGGLE:
-					play_audio = !play_audio
+					Globals.play_audio = !Globals.play_audio
+					AudioServer.set_bus_mute(0, !Globals.play_audio)
 				if secondary_highlighted_menu_option == OptionsOptions.MUSIC_VOLUME:
-					if music_volume < 100:
-						music_volume += 1
+					if Globals.music_volume < 100:
+						Globals.music_volume += 1
+						AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear2db(Globals.music_volume/100.0))
 				if secondary_highlighted_menu_option == OptionsOptions.SOUND_VOLUME:
-					if sound_volume < 100:
-						sound_volume += 1
+					if Globals.sound_volume < 100:
+						Globals.sound_volume += 1
+						AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sounds"), linear2db(Globals.sound_volume/100.0))
 				if first_click:
 					key_delay = 500
 					first_click = false
@@ -109,3 +129,4 @@ func _process(delta):
 			selected_menu_option = MenuOptions.NONE
 	elif selected_menu_option == MenuOptions.EXIT:
 		selected_menu_option = MenuOptions.NONE
+		get_tree().quit()

@@ -15,13 +15,14 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Ld 47 Game"
-run/main_scene="res://map.tscn"
+config/name="hudunnit"
+run/main_scene="res://MainMenu/MainMenuScene.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Eventbus="*res://Scripts/eventbus.gd"
+Globals="*res://Scripts/globals.gd"
 
 [display]
 
