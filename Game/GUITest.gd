@@ -1,6 +1,6 @@
 extends Node
 
-enum InteractionState {NONE, MAIN, QUESTION, INVENTORY, ACCUSATION, EXIT, ANSWER}
+enum InteractionState {NONE, MAIN, QUESTION, INVENTORY, ACCUSATION, EXIT, ANSWER, INVENTORY_ANSWER}
 
 var player = null
 
@@ -84,9 +84,40 @@ func process_interaction():
 				menu_option = 0
 				timestamp = OS.get_ticks_msec()
 	elif npc_interaction_state == InteractionState.INVENTORY:
-		print("Inventory")
-		npc_interaction_state = InteractionState.MAIN
-		timestamp = OS.get_ticks_msec()
+		var item_slots = $CanvasLayer/Inventory.getItemsSlots()
+		$CanvasLayer/DialogueContainer/DialogueText.text = "Select item."
+		if len(item_slots) - $CanvasLayer/Inventory.getFreeSlotsCount():
+			item_slots[menu_option].setActiveFlag(true)
+		if (OS.get_ticks_msec() - timestamp) > 100:
+			if len(item_slots) - $CanvasLayer/Inventory.getFreeSlotsCount():
+				if Input.is_action_pressed("ui_left") and menu_option > 0:
+					item_slots[menu_option].setActiveFlag(false)
+					menu_option -= 1
+					timestamp = OS.get_ticks_msec()
+				if Input.is_action_pressed("ui_right") and menu_option < (len(item_slots) - $CanvasLayer/Inventory.getFreeSlotsCount()) - 1:
+					print($CanvasLayer/Inventory.getFreeSlotsCount())
+					item_slots[menu_option].setActiveFlag(false)
+					menu_option += 1
+					timestamp = OS.get_ticks_msec()
+				if Input.is_action_pressed("ui_accept"):
+					item_slots[menu_option].setActiveFlag(false)
+					npc_interaction_state = InteractionState.INVENTORY_ANSWER
+					timestamp = OS.get_ticks_msec()
+			if Input.is_action_pressed("ui_cancel"):
+				item_slots[menu_option].setActiveFlag(false)
+				npc_interaction_state = InteractionState.MAIN
+				menu_option = 0
+				timestamp = OS.get_ticks_msec()
+	elif npc_interaction_state == InteractionState.INVENTORY_ANSWER:
+		var item = $CanvasLayer/Inventory.getItemSlot(menu_option).getItem()
+		if item.getItemId() in current_interactable.item_answers:
+			$CanvasLayer/DialogueContainer/DialogueText.text = current_interactable.item_answers[item.getItemId()]
+		else:
+			$CanvasLayer/DialogueContainer/DialogueText.text = "Hmm... Item... Nice Item..."
+		if (OS.get_ticks_msec() - timestamp) > 100:
+			if Input.is_action_pressed("ui_accept"):
+				timestamp = OS.get_ticks_msec()
+				npc_interaction_state = InteractionState.INVENTORY
 	elif npc_interaction_state == InteractionState.ACCUSATION:
 		print("Interaction")
 		npc_interaction_state = InteractionState.MAIN

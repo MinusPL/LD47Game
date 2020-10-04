@@ -3,6 +3,7 @@ extends Panel
 var slotIndex;
 var item = null;
 var style;
+var active = false;
 var borderColorActive = Color("#a15a21")
 var borderColorInactive = Color("#483d35")
 
@@ -29,6 +30,9 @@ func setItem(newItem):
 	item.itemSlot = self;
 	item.rect_scale = Vector2(3.0,3.0)
 	refreshColors();
+	
+func getItem():
+	return item
 
 func removeItem():
 	remove_child(item);
@@ -37,7 +41,15 @@ func removeItem():
 
 func refreshColors():
 	style.bg_color = Color(0.0,0.0,0.0,0.0);
-	style.border_color = Color(borderColorInactive);
+	if !active:
+		style.border_color = Color(borderColorInactive);
+	else:
+		style.border_color = Color(borderColorActive);
+		
+
+func setActiveFlag(value: bool):
+	active = value
+	refreshColors()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
