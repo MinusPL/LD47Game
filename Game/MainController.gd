@@ -8,9 +8,11 @@ onready var DeadBody = preload("res://DeadBody/DeadBody.tscn")
 var deadBodies = []
 export (NodePath) var player = null
 export var knifeId = 0
+
+var menuOpened = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Menu/Menu.visible = false
 
 func resetGame():
 	for deadbody in deadBodies:
@@ -34,6 +36,20 @@ func killPlayer():
 	deadbody.clearChest()
 	deadbody.insertKnife(knifeId)
 	deadbody.setCoatColor(get_node(player).getCoatColor())
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	
+func closeMenu():
+	get_node(player).setInteraction(false)
+	$Menu/Menu.visible = false
+	$Menu.setLock(true)
+	menuOpened = false
+	
+func setMenuFlag(value: bool):
+	menuOpened = value
+
+func _process(delta):
+	if !menuOpened:
+		if Input.is_action_just_pressed("ui_cancel"):
+			get_node(player).setInteraction(true)
+			$Menu/Menu.visible = true
+			$Menu.setLock(false)
+			menuOpened = true
