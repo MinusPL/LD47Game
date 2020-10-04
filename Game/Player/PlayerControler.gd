@@ -24,6 +24,12 @@ func teleport(newPosition: Vector2, direction: String):
 	
 func setInteraction(value: bool):
 	interaction = value
+	
+func getCoatColor():
+	return $Coat.modulate
+	
+func resetCoatColor():
+	$Coat.modulate = Color(randf(),randf(),randf())
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -51,6 +57,9 @@ func _process(delta):
 				lock_movment = false
 		if Input.is_action_just_pressed("ui_accept"):
 			interact()
+		if Input.is_action_just_pressed("ui_cancel"):
+			get_node("..").killPlayer()
+			get_node("..").resetGame()
 
 	if velocity.length() > 0:
 		m_vLastDirection = velocity
