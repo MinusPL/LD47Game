@@ -24,14 +24,13 @@ func resetGame():
 			
 	get_node(player).teleport(get_node(player).getInitialPosition(), "down")
 	get_node(player).resetCoatColor()
-	$Node2D/CanvasLayer/Inventory.removeAllItems()
+	$UI/CanvasLayer/Inventory.removeAllItems()
 		
 func killPlayer():
 	var deadbody = DeadBody.instance()
 	deadbody.position = get_node(player).position
 	deadBodies.append(deadbody)
 	add_child(deadbody)
-	deadbody.z_index = get_node(player).z_index - 1
 	deadbody.clearChest()
 	deadbody.insertKnife(knifeId)
 	deadbody.setCoatColor(get_node(player).getCoatColor())

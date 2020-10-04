@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUITest.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Assets/Textures/light.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Tilemap/tilemap1.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Sounds/Socapex - Dark Ambiance - Mastered.ogg" type="AudioStream" id=12]
+[ext_resource path="res://MainController.gd" type="Script" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 4, 4, 4, 4, 32, 0, 32 )
@@ -239,7 +240,8 @@ points = PoolVector2Array( 28, 28, 28, 0, 32, 0, 32, 32, 0, 32, 0, 28 )
 polygon = PoolVector2Array( 65.1448, 3.79046, 426.886, 3.45676, 301.218, -110.618, 188.625, -51.6987 )
 
 [node name="Node" type="Node"]
-script = ExtResource( 6 )
+script = ExtResource( 13 )
+player = NodePath("Player")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 9 )
@@ -327,6 +329,7 @@ occluder = SubResource( 10 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 484, 303 )
+z_index = 999
 m_iMoveSpeed = 100
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
