@@ -17,16 +17,16 @@ var menu_option = 0
 func _ready():
 	Eventbus.connect("interaction", self, "_onInteraction")
 	player = get_parent().get_node("Player")
+	$CanvasLayer/DialogueContainer.hide()
 
 func _onInteraction(object):
 	if object.is_in_group("NPC"):
-		if (OS.get_ticks_msec() - timestamp) > 100:
-			$CanvasLayer/DialogueContainer/NameBackground/Label.text = object.getName()
-			$CanvasLayer/DialogueContainer/DialogueText.text = object.getDesc()
-			npc_interaction_state = InteractionState.DESCRIPTION
-			current_interactable = object
-			player.setInteraction(true)
-			$CanvasLayer/DialogueContainer.show()
+		$CanvasLayer/DialogueContainer/NameBackground/Label.text = object.getName()
+		$CanvasLayer/DialogueContainer/DialogueText.text = object.getDesc()
+		npc_interaction_state = InteractionState.DESCRIPTION
+		current_interactable = object
+		player.setInteraction(true)
+		$CanvasLayer/DialogueContainer.show()
 	else:
 		$CanvasLayer/DialogueContainer/NameBackground/Label.text = object.getName()
 		$CanvasLayer/DialogueContainer/DialogueText.text = object.getFlavourText()

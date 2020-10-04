@@ -20,17 +20,17 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 4.93131
+radius = 4.82788
+height = 22.2906
 
 [node name="Lady" instance=ExtResource( 1 )]
 nameText = "Lady"
 descText = "Huh? Me?"
 
-[node name="AnimatedSprite" parent="." index="0"]
+[node name="AnimatedSprite" parent="NPC" index="0"]
 frames = SubResource( 3 )
-frame = 1
 speed_scale = 0.5
 playing = true
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="NPC" index="1"]
 shape = SubResource( 4 )

@@ -237,9 +237,9 @@ points = PoolVector2Array( 28, 28, 28, 0, 32, 0, 32, 32, 0, 32, 0, 28 )
 
 [sub_resource type="OccluderPolygon2D" id=10]
 polygon = PoolVector2Array( 65.1448, 3.79046, 426.886, 3.45676, 301.218, -110.618, 188.625, -51.6987 )
+
 [node name="Node" type="Node"]
 script = ExtResource( 6 )
-player = NodePath("Player")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 9 )

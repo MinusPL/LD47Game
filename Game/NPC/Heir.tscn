@@ -28,18 +28,18 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=6]
-radius = 5.9545
-height = 18.4034
+radius = 6.30807
+height = 19.1105
 
 [node name="Heir" instance=ExtResource( 1 )]
 nameText = "Heir"
 descText = "I WANNA DIE"
 
-[node name="AnimatedSprite" parent="." index="0"]
+[node name="AnimatedSprite" parent="NPC" index="0"]
 frames = SubResource( 5 )
+frame = 1
 speed_scale = 0.5
 playing = true
 
-[node name="CollisionShape2D" parent="." index="1"]
-position = Vector2( 0, 0.707107 )
+[node name="CollisionShape2D" parent="NPC" index="1"]
 shape = SubResource( 6 )
