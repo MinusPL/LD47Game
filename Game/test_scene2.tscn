@@ -1,12 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUITest.tscn" type="PackedScene" id=2]
 [ext_resource path="res://InteractionObjects/TEST/TEST.tscn" type="PackedScene" id=3]
 [ext_resource path="res://InteractionObjects/TEST2/TEST2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://NPC/Butler.tscn" type="PackedScene" id=5]
+[ext_resource path="res://MainController.gd" type="Script" id=6]
 
 [node name="Node" type="Node"]
+script = ExtResource( 6 )
+player = NodePath("Player")
 
 [node name="TEST" parent="." instance=ExtResource( 3 )]
 position = Vector2( 123, 267.842 )
@@ -29,7 +32,7 @@ nameText = "Testing object 3"
 [node name="Node2D" parent="." instance=ExtResource( 2 )]
 
 [node name="TEST4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 645.901, 199.982 )
+position = Vector2( 616.705, 196.044 )
 flavourText = "It contains"
 nameText = "Testing chest"
 

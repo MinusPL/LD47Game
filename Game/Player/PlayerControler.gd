@@ -24,6 +24,12 @@ func teleport(newPosition: Vector2, direction: String):
 	
 func setInteraction(value: bool):
 	interaction = value
+	
+func getCoatColor():
+	return $Coat.modulate
+	
+func resetCoatColor():
+	$Coat.modulate = Color(randf(),randf(),randf())
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -51,6 +57,9 @@ func _process(delta):
 				lock_movment = false
 		if Input.is_action_just_pressed("ui_accept"):
 			interact()
+		if Input.is_action_just_pressed("ui_cancel"):
+			get_node("..").killPlayer()
+			get_node("..").resetGame()
 
 	if velocity.length() > 0:
 		m_vLastDirection = velocity
@@ -85,14 +94,14 @@ func _process(delta):
 		$InteractionRange.position = interactionDistance[3]
 
 func interact():
-	var other = $InteractionRange.get_overlapping_bodies()
+	var other = $InteractionRange.get_overlapping_areas() + $InteractionRange.get_overlapping_bodies()
 	print(other)
-	if other.size() == 1:
-		if other[0].is_in_group("Interactable"):
-			Eventbus.emit_signal("interaction", other[0])
-			if other[0].is_in_group("Chest"):
-				if not other[0].isItemLooted():
-					other[0].setItemLooted(true)
-					var items = other[0].getItems()
+	if other.size() >= 1:
+		if other[0].get_parent().is_in_group("Interactable"):
+			Eventbus.emit_signal("interaction", other[0].get_parent())
+			if other[0].get_parent().is_in_group("Chest"):
+				if not other[0].get_parent().isItemLooted():
+					other[0].get_parent().setItemLooted(true)
+					var items = other[0].get_parent().getItems()
 					for item in items:
 						Eventbus.emit_signal("addItem", item)

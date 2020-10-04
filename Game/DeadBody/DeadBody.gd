@@ -1,23 +1,21 @@
-extends Node
+extends "res://Scripts/Chest.gd"
 
-signal interaction
 
-export var flavourText = ""
-export var nameText = ""
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
-
-func getFlavourText():
-	return flavourText
+	randomize()
+	$Sprite.modulate = Color(randf(),randf(),randf())
 	
-func getName():
-	return nameText
+	
+func insertKnife(knifeId: int):
+	items.append(knifeId)
+	
+func setCoatColor(coatColor: Color):
+	$Sprite.modulate = coatColor
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -16,6 +16,8 @@ func _ready():
 	$Sprite.modulate = Color(0.0,0.0,1.0,1.0)
 	items.append(item_id)
 
+func clearChest():
+	items.clear()
 
 func getFlavourText():
 	return flavourText

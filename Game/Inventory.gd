@@ -37,6 +37,10 @@ func addItem(id):
 		var item = Items.itemDictionary[id];
 		slot.setItem(Item.new(id, item.itemName, item.texture, slot))
 		
+func removeAllItems():
+	for slot in slotList:
+		slot.removeItem()
+		
 func getItemsSlots():
 	return slotList
 	
