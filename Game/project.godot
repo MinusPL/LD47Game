@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Ld 47 Game"
-run/main_scene="res://test_scene2.tscn"
+run/main_scene="res://map.tscn"
 config/icon="res://icon.png"
 
 [autoload]
