@@ -41,6 +41,9 @@ questions = {
 "Dupa": "Jestem Dupa",
 "Więcej niż jedno zwierze to.": "Lama."
 }
+item_answers = {
+0: "Knife - I like Knifes"
+}
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 484, 303 )
