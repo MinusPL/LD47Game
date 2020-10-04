@@ -53,12 +53,16 @@ height = 14.5704
 ]]
 scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
+nameText = "Butler"
+descText = "I am sus!"
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
 frames = SubResource( 9 )
 frame = 1
+
+speed_scale = 0.5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]

@@ -1,16 +1,25 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Fonts/default.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://GUITest.gd" type="Script" id=2]
 [ext_resource path="res://Inventory.gd" type="Script" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.211765, 0.196078, 0.243137, 1 )
+bg_color = Color( 0.145098, 0.145098, 0.164706, 0.784314 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.211765, 0.196078, 0.243137, 0.901961 )
+
+[sub_resource type="DynamicFont" id=4]
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.145098, 0.145098, 0.164706, 0.784314 )
 
 [node name="Node2D" type="Node"]
 script = ExtResource( 2 )
@@ -18,12 +27,15 @@ script = ExtResource( 2 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogueContainer" type="Control" parent="CanvasLayer"]
+anchor_left = 0.5
 anchor_top = 0.8
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 60.0
-margin_right = -60.0
+margin_left = -453.0
+margin_right = 453.0
 margin_bottom = -20.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -32,6 +44,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 5.0
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -39,11 +52,12 @@ __meta__ = {
 [node name="DialogueText" type="Label" parent="CanvasLayer/DialogueContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 22.6189
-margin_right = -10.0
-margin_bottom = -12.0
+margin_left = 8.50165
+margin_top = 20.3714
+margin_right = -11.4984
+margin_bottom = -14.2475
 mouse_default_cursor_shape = 2
+custom_styles/normal = SubResource( 2 )
 text = "Example text
 Example text
 Example text
@@ -58,7 +72,7 @@ anchor_right = 0.2
 margin_left = 20.0
 margin_right = 40.0
 margin_bottom = 20.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 3 )
 
 [node name="Label" type="Label" parent="CanvasLayer/DialogueContainer/NameBackground"]
 anchor_right = 1.0
@@ -67,20 +81,25 @@ margin_left = 10.0
 margin_top = 2.0
 margin_right = -10.0
 margin_bottom = -2.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 text = "Test name"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Inventory" type="Panel" parent="CanvasLayer"]
+anchor_left = 0.5
 anchor_top = 0.69
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.8
-margin_left = 60.0
-margin_right = -60.0
-margin_bottom = -10.0
+margin_left = -453.0
+margin_top = -1.49829
+margin_right = 453.0
+margin_bottom = -11.4983
 mouse_default_cursor_shape = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 5 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false

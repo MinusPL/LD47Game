@@ -12,7 +12,7 @@ var initialPosition = Vector2(0,0)
 var lock_movment = false
 var interaction = false
 
-var interactionDistance = [Vector2(0,40), Vector2(0,-40), Vector2(-24, 0), Vector2(24, 0)]
+var interactionDistance = [Vector2(0,20), Vector2(0,-20), Vector2(-12, 0), Vector2(12, 0)]
 
 func getInitialPosition():
 	return initialPosition
@@ -105,3 +105,9 @@ func interact():
 					var items = other[0].get_parent().getItems()
 					for item in items:
 						Eventbus.emit_signal("addItem", item)
+
+
+func _on_AnimatedSprite_frame_changed():
+	if $AnimatedSprite.is_playing() and ($AnimatedSprite.frame == 0 or $AnimatedSprite.frame == 2):
+		$footstep.play()	
+	

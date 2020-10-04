@@ -20,11 +20,13 @@ func _ready():
 
 func _onInteraction(object):
 	if object.is_in_group("NPC"):
-		$CanvasLayer/DialogueContainer/NameBackground/Label.text = object.getName()
-		$CanvasLayer/DialogueContainer/DialogueText.text = object.getDesc()
-		npc_interaction_state = InteractionState.DESCRIPTION
-		current_interactable = object
-		player.setInteraction(true)
+		if (OS.get_ticks_msec() - timestamp) > 100:
+			$CanvasLayer/DialogueContainer/NameBackground/Label.text = object.getName()
+			$CanvasLayer/DialogueContainer/DialogueText.text = object.getDesc()
+			npc_interaction_state = InteractionState.DESCRIPTION
+			current_interactable = object
+			player.setInteraction(true)
+			$CanvasLayer/DialogueContainer.show()
 	else:
 		$CanvasLayer/DialogueContainer/NameBackground/Label.text = object.getName()
 		$CanvasLayer/DialogueContainer/DialogueText.text = object.getFlavourText()
@@ -105,6 +107,7 @@ func process_interaction():
 		current_interactable = null
 		npc_interaction_state = InteractionState.NONE
 		player.setInteraction(false)
+		$CanvasLayer/DialogueContainer.hide()
 		$CanvasLayer/DialogueContainer/DialogueText.text = ""
 	elif npc_interaction_state == InteractionState.DESCRIPTION:
 		if Input.is_action_just_pressed("ui_accept"):
