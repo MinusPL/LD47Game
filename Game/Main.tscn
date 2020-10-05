@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Teleporter/Teleporter.tscn" type="PackedScene" id=2]
@@ -12,10 +12,75 @@
 [ext_resource path="res://NPC/Cook.tscn" type="PackedScene" id=10]
 [ext_resource path="res://NPC/Butler.tscn" type="PackedScene" id=11]
 [ext_resource path="res://NPC/Lady.tscn" type="PackedScene" id=12]
+[ext_resource path="res://InteractionObjects/Chest.tscn" type="PackedScene" id=13]
+[ext_resource path="res://DeadBody/DeadBody.tscn" type="PackedScene" id=14]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
 player = NodePath("Player")
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 424.149, 957.224 )
+z_index = 999
+m_iMoveSpeed = 100
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+zoom = Vector2( 0.25, 0.25 )
+
+[node name="Chests" type="Node2D" parent="."]
+
+[node name="Chest" parent="Chests" groups=[
+"Chest",
+"Interactable",
+] instance=ExtResource( 13 )]
+position = Vector2( 720, 408 )
+scale = Vector2( 16, 8 )
+z_index = 1
+flavourText = "test"
+nameText = "test"
+item_id = 4
+
+[node name="Chest2" parent="Chests" groups=[
+"Chest",
+"Interactable",
+] instance=ExtResource( 13 )]
+position = Vector2( 752, 38 )
+scale = Vector2( 10, 16 )
+z_index = 1
+flavourText = "test"
+nameText = "test"
+item_id = 1
+
+[node name="Chest3" parent="Chests" groups=[
+"Chest",
+"Interactable",
+] instance=ExtResource( 13 )]
+position = Vector2( -718, 733 )
+scale = Vector2( 14, 28 )
+z_index = 1
+flavourText = "test"
+nameText = "test"
+item_id = 3
+
+[node name="Chest4" parent="Chests" groups=[
+"Chest",
+"Interactable",
+] instance=ExtResource( 13 )]
+position = Vector2( -590, 624 )
+scale = Vector2( 10, 48 )
+z_index = 1
+flavourText = "test"
+nameText = "test"
+item_id = 2
+
+[node name="DeadBody" parent="." instance=ExtResource( 14 )]
+position = Vector2( -656.273, 755.106 )
+rotation = -3.14159
+scale = Vector2( 1, 1.5 )
+z_index = 1
+flavourText = "test"
+nameText = "test"
 
 [node name="Node2D" parent="." instance=ExtResource( 4 )]
 
@@ -44,15 +109,6 @@ position = Vector2( 394.185, 803.326 )
 
 [node name="Heir" parent="." instance=ExtResource( 9 )]
 position = Vector2( 657.526, 819.372 )
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 424.149, 957.224 )
-z_index = 999
-m_iMoveSpeed = 100
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-current = true
-zoom = Vector2( 0.25, 0.25 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
