@@ -2,13 +2,16 @@ extends Node
 
 onready var DeadBody = preload("res://DeadBody/DeadBody.tscn")
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+
+enum GameState{INITIAL, FURTHER}
+
 var deadBodies = []
 export (NodePath) var player = null
+export (Array, String) var welcomeTextList = [""]
 export var knifeId = 0
 export var blackoutTime_ms = 2000
+var gameState = GameState.INITIAL
+var killedCounter = 0
 var menuOpened = false
 var inventoryOpen = false
 var objectDescriptionShown = false
@@ -32,7 +35,15 @@ func resetGame():
 	get_node(player).teleport(get_node(player).getInitialPosition(), "down")
 	get_node(player).resetCoatColor()
 	$UI/CanvasLayer/Inventory.removeAllItems()
-		
+	gameState = GameState.INITIAL
+	$UI/CanvasLayer/DialogueContainer.hide()
+	$UI/CanvasLayer/Inventory.hide()
+	setInventoryOpen(false)
+	get_node(player).setInteraction(false)
+	$UI.setLockedTimestamp()
+	$UI.setInventoryLocked(false)
+	$UI.resetStates()
+	
 func killPlayer():
 	var deadbody = DeadBody.instance()
 	deadbody.position = get_node(player).position
@@ -42,6 +53,7 @@ func killPlayer():
 	deadbody.insertKnife(knifeId)
 	deadbody.setCoatColor(get_node(player).getCoatColor())
 	get_node(player).resetInteractionsAvailable()
+	killedCounter += 1
 	
 func closeMenu():
 	get_node(player).setInteraction(false)
@@ -69,17 +81,33 @@ func setObjectDescriptionFlag(value):
 	objectDescriptionShown = value
 
 func _process(delta):
-	if !menuOpened and not inventoryOpen:
-		if Input.is_action_just_pressed("ui_menu"):
-			get_node(player).setInteraction(true)
-			$Menu/Menu.visible = true
-			$Menu.setLock(false)
-			menuOpened = true
-			
 	if OS.get_ticks_msec() - blackoutTimestamp < blackoutTime_ms:
-		get_node(player).setInteraction(true)
-		$Blackout/Panel.show()
+			get_node(player).setInteraction(true)
+			$Blackout/Panel.show()
+			$UI.setInventoryLocked(true)
 	else:
-		get_node(player).setInteraction(false)
 		$Blackout/Panel.hide()
+		if gameState == GameState.INITIAL:
+			setInventoryOpen(true)
+			get_node(player).setInteraction(true)
+			$UI.setInventoryLocked(true)
+			$UI/CanvasLayer/DialogueContainer.show()
+			$UI/CanvasLayer/DialogueContainer/NameBackground/Label.text = "Butler"
+			$UI/CanvasLayer/DialogueContainer/DialogueText.text = welcomeTextList[killedCounter] if killedCounter < welcomeTextList.size() else welcomeTextList[-1]
+			if Input.is_action_just_pressed("ui_accept"):
+				setInventoryOpen(false)
+				get_node(player).setInteraction(false)
+				$UI.setLockedTimestamp()
+				$UI.setInventoryLocked(false)
+				$UI/CanvasLayer/DialogueContainer.hide()
+				$UI/CanvasLayer/DialogueContainer/NameBackground/Label.text = ""
+				$UI/CanvasLayer/DialogueContainer/DialogueText.text = ""
+				gameState = GameState.FURTHER
+		else:
+			if !menuOpened and not inventoryOpen:
+				if Input.is_action_just_pressed("ui_menu"):
+					get_node(player).setInteraction(true)
+					$Menu/Menu.visible = true
+					$Menu.setLock(false)
+					menuOpened = true
 	

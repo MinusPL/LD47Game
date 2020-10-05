@@ -244,6 +244,7 @@ polygon = PoolVector2Array( 65.1448, 3.79046, 426.886, 3.45676, 301.218, -110.61
 [node name="Node" type="Node"]
 script = ExtResource( 13 )
 player = NodePath("Player")
+welcomeTextList = [ "Majteczki w kropeczki", "Kaszanka tadadaa" ]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 9 )

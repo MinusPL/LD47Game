@@ -31,15 +31,15 @@ maxMovement = 20
 [node name="MenuContainer" type="HBoxContainer" parent="."]
 margin_left = 80.0
 margin_top = 80.0
-margin_right = 607.0
-margin_bottom = 280.0
+margin_right = 678.0
+margin_bottom = 483.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer"]
 margin_right = 161.0
-margin_bottom = 200.0
+margin_bottom = 403.0
 
 [node name="Title" type="Label" parent="MenuContainer/VBoxContainer"]
 margin_right = 161.0
@@ -82,12 +82,12 @@ text = "Exit"
 [node name="CenterContainer" type="CenterContainer" parent="MenuContainer"]
 margin_left = 211.0
 margin_right = 527.0
-margin_bottom = 200.0
+margin_bottom = 403.0
 
 [node name="OptionsOptions" type="VBoxContainer" parent="MenuContainer/CenterContainer"]
-margin_top = 57.0
+margin_top = 158.0
 margin_right = 316.0
-margin_bottom = 143.0
+margin_bottom = 244.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/CenterContainer/OptionsOptions"]
 margin_right = 316.0
@@ -164,20 +164,27 @@ __meta__ = {
 [node name="CreditsContainer" type="MarginContainer" parent="."]
 margin_left = 80.0
 margin_top = 80.0
-margin_right = 607.0
-margin_bottom = 280.0
+margin_right = 678.0
+margin_bottom = 483.0
 
 [node name="CreditsLabel" type="Label" parent="CreditsContainer"]
-margin_right = 527.0
-margin_bottom = 200.0
+margin_right = 598.0
+margin_bottom = 403.0
 custom_fonts/font = SubResource( 3 )
 text = "Game Created by:
 - Minus
 - Szatku
 - Dante
-- Another Guy
+- Kraig
 
-For Ludum Dare 47 Game Jam."
+For Ludum Dare 47 Game Jam.
+Music Used:
+Menu Theme: Alexandr Zhelanov - Mystical Theme
+Main Theme: Philippe Groarke - Dark ambience
+
+Fonts Used:
+Brandon Schoepf - November
+Camellina - Rainy Hearts"
 __meta__ = {
 "_edit_use_anchors_": false
 }
