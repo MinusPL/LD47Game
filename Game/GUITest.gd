@@ -212,8 +212,14 @@ func process_interaction():
 		if Input.is_action_just_pressed("ui_accept"):
 			npc_interaction_state = InteractionState.INVENTORY
 	elif npc_interaction_state == InteractionState.ACCUSATION:
-		player.setInteractionAvailable(0)
-		npc_interaction_state = InteractionState.MAIN
+		$CanvasLayer/DialogueContainer/NameBackground/Label.text = "Detective"
+		$CanvasLayer/DialogueContainer/DialogueText.text = "It has to be you! You're under arrest."
+		if Input.is_action_just_pressed("ui_accept"):
+			if current_interactable.is_in_group("Killer"):
+				get_tree().change_scene("res://WinScreen/WinScreen.tscn")
+			else:
+				player.setInteractionsAvailable(0)
+				npc_interaction_state = InteractionState.EXIT
 	elif npc_interaction_state == InteractionState.EXIT:
 		current_interactable = null
 		inventoryLocked = false

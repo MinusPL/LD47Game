@@ -49,6 +49,7 @@ height = 14.5704
 
 [node name="Butler" type="Node2D" groups=[
 "Interactable",
+"Killer",
 "NPC",
 ]]
 script = ExtResource( 1 )
@@ -59,7 +60,7 @@ descText = "I am sus!"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
 frames = SubResource( 9 )
-frame = 6
+frame = 5
 speed_scale = 0.5
 playing = true
 
