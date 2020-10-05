@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Teleporter/Teleporter.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://InteractionObjects/Chest.tscn" type="PackedScene" id=13]
 [ext_resource path="res://DeadBody/DeadBody.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Blackout/Blackout.tscn" type="PackedScene" id=15]
+[ext_resource path="res://InteractionObjects/Interactable.tscn" type="PackedScene" id=16]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
@@ -80,10 +81,6 @@ item_id = 2
 position = Vector2( -656.273, 755.106 )
 rotation = -3.14159
 z_index = 1
-flavourText = "It's the body of the victim. He's been stabbed in the back."
-nameText = "Dead body"
-
-[node name="Node2D" parent="." instance=ExtResource( 4 )]
 
 [node name="Teleporter2" parent="." instance=ExtResource( 2 )]
 position = Vector2( -351.645, 257.554 )
@@ -98,6 +95,7 @@ teleportPlace = NodePath("../Teleporter2")
 
 [node name="Cook" parent="." instance=ExtResource( 10 )]
 position = Vector2( 646.5, 305 )
+z_index = 1
 descText = "What is it?"
 questions = {
 "Can you tell me about the victim?": "Don’t know anything about the guy, aside from his giant appetite.",
@@ -114,6 +112,7 @@ item_answers = {
 
 [node name="Lord" parent="." instance=ExtResource( 8 )]
 position = Vector2( -591.647, -145.156 )
+z_index = 1
 descText = "Can I help you, detective?"
 questions = {
 "Can you tell me about the victim?": "One of my best friends. Loyal and dependable. He will be missed. We were planning on going boating if the weather was fine. I guess we’ll never have a chance anymore. He told me, in secret, that he was in the area to find clues about some secret organization. Scary stuff. Apparently they were targeting nobles.",
@@ -130,6 +129,7 @@ item_answers = {
 
 [node name="Lady" parent="." instance=ExtResource( 12 )]
 position = Vector2( -550.161, -123.559 )
+z_index = 1
 descText = "Yes?"
 questions = {
 "Can you tell me about the victim?": "A handsome man for sure, and a great detective. It’s a real shame.",
@@ -146,6 +146,7 @@ item_answers = {
 
 [node name="Butler" parent="." instance=ExtResource( 11 )]
 position = Vector2( 394.185, 803.326 )
+z_index = 1
 descText = "How can I help you?"
 questions = {
 "Can you tell me about the victim?": "He was a detective, a friend of the family. He came to meet the lord and relax.",
@@ -162,6 +163,7 @@ item_answers = {
 
 [node name="Heir" parent="." instance=ExtResource( 9 )]
 position = Vector2( 657.526, 819.372 )
+z_index = 1
 descText = "What do you want? It wasn’t me."
 questions = {
 "Can you tell me about the victim?": "Why should I tell you? He was a friend, that’s all you need to know.",
@@ -181,9 +183,351 @@ stream = ExtResource( 5 )
 autoplay = true
 bus = "Music"
 
-[node name="UI" parent="." instance=ExtResource( 6 )]
+[node name="Flavours" type="Node2D" parent="."]
+
+[node name="Interactable" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 464, 180 )
+scale = Vector2( 8, 12 )
+z_index = 1
+flavourText = "It's a nice cushioned chair."
+nameText = "Chair"
+
+[node name="Interactable2" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 496, 180 )
+scale = Vector2( 8, 12 )
+z_index = 1
+flavourText = "It's a nice cushioned chair."
+nameText = "Chair"
+
+[node name="Interactable3" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 528, 180 )
+scale = Vector2( 8, 12 )
+z_index = 1
+flavourText = "It's a nice cushioned chair."
+nameText = "Chair"
+
+[node name="Interactable4" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 560, 180 )
+scale = Vector2( 8, 12 )
+z_index = 1
+flavourText = "It's a nice cushioned chair."
+nameText = "Chair"
+
+[node name="Interactable5" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 592, 180 )
+scale = Vector2( 8, 12 )
+z_index = 1
+flavourText = "It's a nice cushioned chair."
+nameText = "Chair"
+
+[node name="Interactable6" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 624, 180 )
+scale = Vector2( 8, 12 )
+z_index = 1
+flavourText = "It's a nice cushioned chair."
+nameText = "Chair"
+
+[node name="Interactable7" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 656, 180 )
+scale = Vector2( 8, 12 )
+z_index = 1
+flavourText = "It's a nice cushioned chair."
+nameText = "Chair"
+
+[node name="Interactable8" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 656, 84 )
+scale = Vector2( 8, 6 )
+z_index = 1
+flavourText = "It's a nice cushioned chair."
+nameText = "Chair"
+
+[node name="Interactable9" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 624, 84 )
+scale = Vector2( 8, 6 )
+z_index = 1
+flavourText = "It's a nice cushioned chair."
+nameText = "Chair"
+
+[node name="Interactable10" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 592, 84 )
+scale = Vector2( 8, 6 )
+z_index = 1
+flavourText = "It's a nice cushioned chair."
+nameText = "Chair"
+
+[node name="Interactable11" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 560, 84 )
+scale = Vector2( 8, 6 )
+z_index = 1
+flavourText = "It contains"
+nameText = "It contains Comfortable chair"
+
+[node name="Interactable12" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 528, 84 )
+scale = Vector2( 8, 6 )
+z_index = 1
+flavourText = "It's a nice cushioned chair."
+nameText = "Chair"
+
+[node name="Interactable13" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 496, 84 )
+scale = Vector2( 8, 6 )
+z_index = 1
+flavourText = "It's a nice cushioned chair."
+nameText = "Chair"
+
+[node name="Interactable14" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 464, 84 )
+scale = Vector2( 8, 6 )
+z_index = 1
+flavourText = "It's a nice cushioned chair."
+nameText = "Chair"
+
+[node name="Interactable16" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 432, 117 )
+scale = Vector2( 8, 6 )
+z_index = 1
+flavourText = "It's a nice cushioned chair."
+nameText = "Chair"
+
+[node name="Interactable17" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 432, 149 )
+scale = Vector2( 8, 6 )
+z_index = 1
+flavourText = "It's a nice cushioned chair."
+nameText = "Chair"
+
+[node name="Interactable18" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 688, 149 )
+scale = Vector2( 8, 6 )
+z_index = 1
+flavourText = "It's a nice cushioned chair."
+nameText = "Chair"
+
+[node name="Interactable19" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 688, 117 )
+scale = Vector2( 8, 6 )
+z_index = 1
+flavourText = "It's a nice cushioned chair."
+nameText = "Chair"
+
+[node name="Interactable15" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 560, 122 )
+scale = Vector2( 112, 26 )
+z_index = 1
+flavourText = "It's a solid wooden table."
+nameText = "Wooden table"
+
+[node name="Interactable20" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 368, 40 )
+scale = Vector2( 13, 14 )
+z_index = 1
+flavourText = "A heavy vase stands on a table."
+nameText = "Vase"
+
+[node name="Interactable21" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 578, 320 )
+scale = Vector2( 2, 16 )
+z_index = 1
+flavourText = "There is a red stain at the bottom of the door."
+nameText = "Wooden door"
+
+[node name="Interactable22" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 642, 408 )
+scale = Vector2( 62, 8 )
+z_index = 1
+flavourText = "It's made of wood. Can't counter that."
+nameText = "Wooden countertop"
+
+[node name="Interactable23" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 758, 352 )
+scale = Vector2( 6, 64 )
+z_index = 1
+flavourText = "It's made of wood. Can't counter that."
+nameText = "Wooden countertop"
+
+[node name="Interactable24" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 744, 408 )
+scale = Vector2( 8, 8 )
+z_index = 1
+flavourText = "It's made of wood. Can't counter that."
+nameText = "Wooden countertop"
+
+[node name="Interactable25" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 576, 464 )
+scale = Vector2( 32, 48 )
+z_index = 1
+flavourText = "Lusty Argonian maid?"
+nameText = "Bookcase"
+
+[node name="Interactable26" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 640, 464 )
+scale = Vector2( 32, 48 )
+z_index = 1
+flavourText = "I think my son is gay, hmmm."
+nameText = "Bookcase"
+
+[node name="Interactable27" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 689, 546 )
+scale = Vector2( 10, 28 )
+z_index = 1
+flavourText = "How posh."
+nameText = "Red sofa"
+
+[node name="Interactable34" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 689, 866 )
+scale = Vector2( 10, 28 )
+z_index = 1
+flavourText = "Needs some black leather."
+nameText = "Red sofa"
+
+[node name="Interactable28" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 624, 596 )
+scale = Vector2( 11, 12 )
+z_index = 1
+flavourText = "A comfortable armchair."
+nameText = "Armchair"
+
+[node name="Interactable29" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 656, 596 )
+scale = Vector2( 11, 12 )
+z_index = 1
+flavourText = "A less comfortable armchair."
+nameText = "Armchair"
+
+[node name="Interactable32" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 623.75, 915.875 )
+scale = Vector2( 11, 12 )
+z_index = 1
+flavourText = "A funny joke."
+nameText = "Armchair"
+
+[node name="Interactable33" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 656, 916 )
+scale = Vector2( 11, 12 )
+z_index = 1
+flavourText = "A less funny joke."
+nameText = "Armchair"
+
+[node name="Interactable30" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 366, 864 )
+scale = Vector2( 10, 32 )
+z_index = 1
+flavourText = "The flowers don't smell of anything."
+nameText = "Chest of drawers"
+
+[node name="Interactable31" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 526, 928 )
+scale = Vector2( 10, 32 )
+z_index = 1
+flavourText = "I think it's missing something."
+nameText = "Chest of drawers"
+
+[node name="Interactable35" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 642, 867 )
+scale = Vector2( 20, 16 )
+z_index = 1
+flavourText = "A suspicious lack of coffee."
+nameText = "Coffee table"
+
+[node name="Interactable36" parent="Flavours" instance=ExtResource( 16 )]
+position = Vector2( 636, 716 )
+scale = Vector2( 36, 20 )
+z_index = 1
+flavourText = "Is it just me or did it just get colder?"
+nameText = "Fireplace"
+
+[node name="Flavours2" type="Node2D" parent="."]
+
+[node name="Interactable" parent="Flavours2" instance=ExtResource( 16 )]
+position = Vector2( -528, -172 )
+scale = Vector2( 32, 32 )
+z_index = 1
+flavourText = "Why is the bed spread so crusty?"
+nameText = "Double bed"
+
+[node name="Interactable2" parent="Flavours2" instance=ExtResource( 16 )]
+position = Vector2( -640, -208 )
+scale = Vector2( 32, 48 )
+z_index = 1
+flavourText = "It's locked."
+nameText = "Wardrobe"
+
+[node name="Interactable3" parent="Flavours2" instance=ExtResource( 16 )]
+position = Vector2( -416, -208 )
+scale = Vector2( 32, 48 )
+z_index = 1
+flavourText = "There's a cold breeze coming from it."
+nameText = "Wardrobe"
+
+[node name="Interactable4" parent="Flavours2" instance=ExtResource( 16 )]
+position = Vector2( -335, -112 )
+scale = Vector2( 11, 48 )
+z_index = 1
+flavourText = "It's nice to finally come out."
+nameText = "Closet"
+
+[node name="Interactable37" parent="Flavours2" instance=ExtResource( 16 )]
+position = Vector2( -480, 496 )
+scale = Vector2( 32, 48 )
+z_index = 1
+flavourText = "That's a bit too graphic."
+nameText = "Bookcase"
+
+[node name="Interactable38" parent="Flavours2" instance=ExtResource( 16 )]
+position = Vector2( -416, 496 )
+scale = Vector2( 32, 48 )
+z_index = 1
+flavourText = "I don't even wanna know what's in there."
+nameText = "Wardrobe"
+
+[node name="Interactable5" parent="Flavours2" instance=ExtResource( 16 )]
+position = Vector2( -688, 755 )
+scale = Vector2( 13, 10 )
+z_index = 1
+flavourText = "A place to put down your book."
+nameText = "Nightstand"
+
+[node name="Interactable6" parent="Flavours2" instance=ExtResource( 16 )]
+position = Vector2( -368, 755 )
+scale = Vector2( 13, 10 )
+z_index = 1
+flavourText = "Why is the drawer locked?"
+nameText = "Nightstand"
+
+[node name="Interactable7" parent="Flavours2" instance=ExtResource( 16 )]
+position = Vector2( -338, 734 )
+scale = Vector2( 14, 30 )
+z_index = 1
+flavourText = "A bed for a single."
+nameText = "Single bed"
+
+[node name="Interactable8" parent="Flavours2" instance=ExtResource( 16 )]
+position = Vector2( -334, 610 )
+scale = Vector2( 10, 28 )
+z_index = 1
+flavourText = "Lovers' seat"
+nameText = "Sofa"
+
+[node name="Interactable9" parent="Flavours2" instance=ExtResource( 16 )]
+position = Vector2( -576, -196 )
+scale = Vector2( 13, 12 )
+z_index = 1
+flavourText = "What's that tissue behind?"
+nameText = "Nightstand"
+
+[node name="Interactable10" parent="Flavours2" instance=ExtResource( 16 )]
+position = Vector2( -480, -196 )
+scale = Vector2( 13, 12 )
+z_index = 1
+flavourText = "It stands in the night."
+nameText = "Nightstand"
+
+[node name="Node2D" parent="." instance=ExtResource( 4 )]
+
+[node name="Blackout" parent="." instance=ExtResource( 15 )]
 
 [node name="Menu" parent="." instance=ExtResource( 7 )]
 mainController = NodePath("..")
 
-[node name="Blackout" parent="." instance=ExtResource( 15 )]
+[node name="UI" parent="." instance=ExtResource( 6 )]

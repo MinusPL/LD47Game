@@ -14,7 +14,7 @@ var lock_movment = false
 var interaction = false
 var initialActionsAvaiable = 20
 
-var interactionDistance = [Vector2(0,20), Vector2(0,-20), Vector2(-12, 0), Vector2(12, 0)]
+var interactionDistance = [Vector2(0,20), Vector2(0,-10), Vector2(-12, 0), Vector2(12, 0)]
 
 func getInitialPosition():
 	return initialPosition
@@ -22,7 +22,7 @@ func getInitialPosition():
 func teleport(newPosition: Vector2, direction: String):
 	position = newPosition
 	m_sDirection = direction
-	lock_movment = true
+	lock_movment = false
 	
 func setInteraction(value: bool):
 	interaction = value

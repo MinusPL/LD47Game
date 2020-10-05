@@ -13,6 +13,8 @@ height = 1.75
 ]]
 scale = Vector2( 1, 1.5 )
 script = ExtResource( 1 )
+flavourText = "It's the body of the victim. He's been stabbed in the back."
+nameText = "Dead body"
 
 [node name="DeadBody" type="Sprite" parent="."]
 texture = ExtResource( 3 )
