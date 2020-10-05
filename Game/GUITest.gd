@@ -34,7 +34,8 @@ func _onInteraction(object):
 			$CanvasLayer/DialogueContainer/NameBackground/Label.text = object.getName()
 			$CanvasLayer/DialogueContainer/DialogueText.text = object.getDesc()
 			npc_interaction_state = InteractionState.DESCRIPTION
-			current_interactable = object
+			get_parent().setInventoryOpen(true)
+      current_interactable = object
 			player.setInteraction(true)
 			inventoryLocked = true
 			$CanvasLayer/DialogueContainer.show()
@@ -170,6 +171,7 @@ func process_interaction():
 			menu_option = 0
 	elif npc_interaction_state == InteractionState.INVENTORY:
 		var item_slots = $CanvasLayer/Inventory.getItemsSlots()
+		$CanvasLayer/Inventory.show()
 		$CanvasLayer/DialogueContainer/DialogueText.text = "Select item."
 		if len(item_slots) - $CanvasLayer/Inventory.getFreeSlotsCount():
 			item_slots[menu_option].setActiveFlag(true)
@@ -185,8 +187,10 @@ func process_interaction():
 				item_slots[menu_option].setActiveFlag(false)
 				player.decreaseInteractionsAvailable()
 				npc_interaction_state = InteractionState.INVENTORY_ANSWER
+				$CanvasLayer/Inventory.hide()
 		if Input.is_action_just_pressed("ui_cancel"):
 			item_slots[menu_option].setActiveFlag(false)
+			$CanvasLayer/Inventory.hide()
 			npc_interaction_state = InteractionState.MAIN
 			menu_option = 0
 	elif npc_interaction_state == InteractionState.INVENTORY_ANSWER:
@@ -205,6 +209,7 @@ func process_interaction():
 		inventoryLocked = false
 		npc_interaction_state = InteractionState.NONE
 		player.setInteraction(false)
+		get_parent().setInventoryOpen(false)
 		lock_timestamp = OS.get_ticks_msec()
 		$CanvasLayer/DialogueContainer.hide()
 		$CanvasLayer/DialogueContainer/DialogueText.text = ""

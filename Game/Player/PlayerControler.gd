@@ -109,7 +109,7 @@ func interact():
 	if !interaction:
 		var other = $InteractionRange.get_overlapping_areas() + $InteractionRange.get_overlapping_bodies()
 		print(other)
-		if other.size() >= 1:
+		if other:
 			if other[0].get_parent().is_in_group("Interactable"):
 				Eventbus.emit_signal("interaction", other[0].get_parent())
 
