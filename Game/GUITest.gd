@@ -19,6 +19,16 @@ var inventoryLocked = false
 # var a = 2
 # var b = "text"
 
+func setInventoryLocked(value: bool):
+	inventoryLocked = value
+	
+func setLockedTimestamp():
+	lock_timestamp = OS.get_ticks_msec()
+	
+func resetStates():
+	npc_interaction_state = InteractionState.NONE
+	obj_description_state = DescriptionState.NONE
+	inv_state = InventoryState.NONE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,7 +45,7 @@ func _onInteraction(object):
 			$CanvasLayer/DialogueContainer/DialogueText.text = object.getDesc()
 			npc_interaction_state = InteractionState.DESCRIPTION
 			get_parent().setInventoryOpen(true)
-      current_interactable = object
+			current_interactable = object
 			player.setInteraction(true)
 			inventoryLocked = true
 			$CanvasLayer/DialogueContainer.show()
