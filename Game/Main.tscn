@@ -19,7 +19,7 @@
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
 player = NodePath("Player")
-welcomeTextList = [ "Lorem Ipsum Max Gloriam, Fuckig Terrible Shit, And Another Dymmy Text" ]
+welcomeTextList = [ "Thank you for coming on such a short notice, detective. As the message specified, there’s been a murder in the guest room, on the second floor. The victim was a friend of the family. I was the one to find the body. Please, come in. I will be here if you have any questions.", "Thank you for coming on such a short notice, detective. As the message specified, there’s been a murder in the guest room, on the second floor. The victim was a friend of the family. I was the one to find the body. Please, do come in. I will be here if you have any questions.", "Thank you for coming on such a short notice, detective. As the message specified, there’s been a murder in the guest room, on the second floor. The victim was a friend of the family. I was the one who found the body. Please, do come in. I will be here if you have any questions.", "Thank you for coming on such a short notice. As the message specified, there’s been a murder in the guest room, on the second floor. The victim was a friend of the family. I was the one who found the body. Please, do come in. I will be here if you have any questions." ]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 424.149, 957.224 )
@@ -39,8 +39,8 @@ zoom = Vector2( 0.25, 0.25 )
 position = Vector2( 720, 408 )
 scale = Vector2( 16, 8 )
 z_index = 1
-flavourText = "test"
-nameText = "test"
+flavourText = "Pots and pans are bubbling over a fire. The metal door is slightly ajar."
+nameText = "Stove"
 item_id = 4
 
 [node name="Chest2" parent="Chests" groups=[
@@ -50,8 +50,8 @@ item_id = 4
 position = Vector2( 752, 38 )
 scale = Vector2( 10, 16 )
 z_index = 1
-flavourText = "test"
-nameText = "test"
+flavourText = "You see a vase on a stand. It's solid and heavy. On closer inspection you see that it's covered in blood."
+nameText = "Vase"
 item_id = 1
 
 [node name="Chest3" parent="Chests" groups=[
@@ -61,8 +61,8 @@ item_id = 1
 position = Vector2( -718, 733 )
 scale = Vector2( 14, 28 )
 z_index = 1
-flavourText = "test"
-nameText = "test"
+flavourText = "There is long red hair on the covers of the bed."
+nameText = "Red hair"
 item_id = 3
 
 [node name="Chest4" parent="Chests" groups=[
@@ -72,16 +72,16 @@ item_id = 3
 position = Vector2( -590, 624 )
 scale = Vector2( 10, 48 )
 z_index = 1
-flavourText = "test"
-nameText = "test"
+flavourText = "There is a large wardrobe in the room, there is a lot of space underneath."
+nameText = "Wardrobe"
 item_id = 2
 
 [node name="DeadBody" parent="." instance=ExtResource( 14 )]
 position = Vector2( -656.273, 755.106 )
 rotation = -3.14159
 z_index = 1
-flavourText = "test"
-nameText = "test"
+flavourText = "It's the body of the victim. He's been stabbed in the back."
+nameText = "Dead body"
 
 [node name="Node2D" parent="." instance=ExtResource( 4 )]
 
@@ -98,18 +98,83 @@ teleportPlace = NodePath("../Teleporter2")
 
 [node name="Cook" parent="." instance=ExtResource( 10 )]
 position = Vector2( 646.5, 305 )
+descText = "What is it?"
+questions = {
+"Can you tell me about the victim?": "Don’t know anything about the guy, aside from his giant appetite.",
+"What were you doing when the body was found?": "I was taking out the trash and I thought I would take a little break outside. When I came back I heard a commotion and the butler was talking to a messenger. I take out the trash through the back door, you have to go down to the servants’ floor through that door over there.",
+"Who are you?": "I’m just a cook, I mostly stay in the kitchen and don’t really go into the house."
+}
+item_answers = {
+0: "No idea.",
+1: "I hate these vases, they’re really heavy, could knock out a man with one.",
+2: "No idea.",
+3: "Just keep them away from the pots.",
+4: "I don’t remember burning any notes, I have other stuff for kindling."
+}
 
 [node name="Lord" parent="." instance=ExtResource( 8 )]
 position = Vector2( -591.647, -145.156 )
+descText = "Can I help you, detective?"
+questions = {
+"Can you tell me about the victim?": "One of my best friends. Loyal and dependable. He will be missed. We were planning on going boating if the weather was fine. I guess we’ll never have a chance anymore. He told me, in secret, that he was in the area to find clues about some secret organization. Scary stuff. Apparently they were targeting nobles.",
+"What were you doing when the body was found?": "My wife and I were having tea in the living room. We decided to retire to our room when the butler found the body.",
+"Who are you?": "I am the owner of this house."
+}
+item_answers = {
+0: "Ah, this is a knife that was given to me by my best friend… How dreadful that it turned out to be his demise.",
+1: "I have no idea how it’s related.",
+2: "No idea.",
+3: "It’s my wife’s hair. Is it important?",
+4: "Maybe it’s to do with that secret organization that I’ve been hearing rumors about?"
+}
 
 [node name="Lady" parent="." instance=ExtResource( 12 )]
 position = Vector2( -550.161, -123.559 )
+descText = "Yes?"
+questions = {
+"Can you tell me about the victim?": "A handsome man for sure, and a great detective. It’s a real shame.",
+"What were you doing when the body was found?": "After tea and cakes we went up to our room. That’s when we heard of the murder.",
+"Who are you?": "I am the lord's wife."
+}
+item_answers = {
+0: "That must be my husband’s knife, he usually keeps it in a safe in the wardrobe.",
+1: "Aren’t they beautiful? I picked them out myself. Why would someone dirty them like this?",
+2: "No idea.",
+3: "I… I… I didn’t kill him! I just… I was there for something else…",
+4: "No idea."
+}
 
 [node name="Butler" parent="." instance=ExtResource( 11 )]
 position = Vector2( 394.185, 803.326 )
+descText = "How can I help you?"
+questions = {
+"Can you tell me about the victim?": "He was a detective, a friend of the family. He came to meet the lord and relax.",
+"What were you doing when the body was found?": "I was doing my rounds, as always. I wanted to check on our guest but he was not responding, so I went in. That’s when I found the body.",
+"Who are you?": "I am a butler."
+}
+item_answers = {
+0: "This knife belongs to my master, it’s one of his prized possessions.",
+1: "It’s a vase from the dining room.",
+2: "No idea.",
+3: "No idea.",
+4: "I have no idea."
+}
 
 [node name="Heir" parent="." instance=ExtResource( 9 )]
 position = Vector2( 657.526, 819.372 )
+descText = "What do you want? It wasn’t me."
+questions = {
+"Can you tell me about the victim?": "Why should I tell you? He was a friend, that’s all you need to know.",
+"What were you doing when the body was found?": "I was in my room the whole night, I didn’t hear anything.",
+"Who are you?": "I’m the future head of this house and the rest is none of your business."
+}
+item_answers = {
+0: "No idea.",
+1: "It’s a vase…",
+2: "It’s one of my buttons, where did you find it? I don’t know what you’re thinking but I didn’t kill him.",
+3: "Why do you ask? Where did you find it? That…",
+4: "No idea."
+}
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
