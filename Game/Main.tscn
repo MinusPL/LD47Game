@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Teleporter/Teleporter.tscn" type="PackedScene" id=2]
@@ -6,6 +6,12 @@
 [ext_resource path="res://map_lights.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Sounds/Socapex - Dark Ambiance - Mastered.ogg" type="AudioStream" id=5]
 [ext_resource path="res://GUITest.tscn" type="PackedScene" id=6]
+[ext_resource path="res://InGameMenu/InGameMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://NPC/Lord.tscn" type="PackedScene" id=8]
+[ext_resource path="res://NPC/Heir.tscn" type="PackedScene" id=9]
+[ext_resource path="res://NPC/Cook.tscn" type="PackedScene" id=10]
+[ext_resource path="res://NPC/Butler.tscn" type="PackedScene" id=11]
+[ext_resource path="res://NPC/Lady.tscn" type="PackedScene" id=12]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 3 )
@@ -14,15 +20,30 @@ player = NodePath("Player")
 [node name="Node2D" parent="." instance=ExtResource( 4 )]
 
 [node name="Teleporter2" parent="." instance=ExtResource( 2 )]
-position = Vector2( -373.533, 279.442 )
-scale = Vector2( 100, 100 )
+position = Vector2( -351.645, 257.554 )
+scale = Vector2( 65, 65 )
 teleportPlace = NodePath("../Teleporter")
 
 [node name="Teleporter" parent="." instance=ExtResource( 2 )]
-position = Vector2( 733.114, 369.114 )
-scale = Vector2( 100, 100 )
+position = Vector2( 735.92, 451.565 )
+scale = Vector2( 65, 65 )
 teleportDirection = 1
 teleportPlace = NodePath("../Teleporter2")
+
+[node name="Cook" parent="." instance=ExtResource( 10 )]
+position = Vector2( 646.5, 305 )
+
+[node name="Lord" parent="." instance=ExtResource( 8 )]
+position = Vector2( -591.647, -145.156 )
+
+[node name="Lady" parent="." instance=ExtResource( 12 )]
+position = Vector2( -550.161, -123.559 )
+
+[node name="Butler" parent="." instance=ExtResource( 11 )]
+position = Vector2( 394.185, 803.326 )
+
+[node name="Heir" parent="." instance=ExtResource( 9 )]
+position = Vector2( 657.526, 819.372 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 424.149, 957.224 )
@@ -39,3 +60,6 @@ autoplay = true
 bus = "Music"
 
 [node name="UI" parent="." instance=ExtResource( 6 )]
+
+[node name="Menu" parent="." instance=ExtResource( 7 )]
+mainController = NodePath("..")

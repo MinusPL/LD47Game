@@ -35,7 +35,7 @@ func addItem(id):
 	var slot = getFreeSlot();
 	if slot:
 		var item = Items.itemDictionary[id];
-		slot.setItem(Item.new(id, item.itemName, item.texture, slot))
+		slot.setItem(Item.new(id, item.itemName, item.itemDesc, item.texture, slot))
 		
 func removeAllItems():
 	for slot in slotList:

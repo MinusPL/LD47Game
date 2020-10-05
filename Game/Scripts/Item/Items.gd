@@ -8,10 +8,12 @@ const itemImages = [
 const itemDictionary = {
 	0: {
 		"itemName": "Normal Knife",
+		"itemDesc": "Very wierd knife. Who cares about knives?",
 		"texture": itemImages[0],
 	},
 	1: {
 		"itemName": "Yyyy Waza",
+		"itemDesc": "Uuuuu URNA",
 		"texture": itemImages[1],
 	}
 };
