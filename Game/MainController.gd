@@ -8,13 +8,16 @@ onready var DeadBody = preload("res://DeadBody/DeadBody.tscn")
 var deadBodies = []
 export (NodePath) var player = null
 export var knifeId = 0
-
+export var blackoutTime_ms = 2000
 var menuOpened = false
 var inventoryOpen = false
 var objectDescriptionShown = false
+var blackoutTimestamp = OS.get_ticks_msec() - blackoutTime_ms
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Menu/Menu.visible = false
+	$Blackout/Panel.hide()
+	Eventbus.connect("playerDied", self, "_onPlayerDied")
 
 func resetGame():
 	for deadbody in deadBodies:
@@ -38,12 +41,19 @@ func killPlayer():
 	deadbody.clearChest()
 	deadbody.insertKnife(knifeId)
 	deadbody.setCoatColor(get_node(player).getCoatColor())
+	get_node(player).resetInteractionsAvailable()
 	
 func closeMenu():
 	get_node(player).setInteraction(false)
 	$Menu/Menu.visible = false
 	$Menu.setLock(true)
 	menuOpened = false
+	
+func _onPlayerDied():
+	$Blackout/Panel.hide()
+	blackoutTimestamp = OS.get_ticks_msec()
+	killPlayer()
+	resetGame()
 	
 func setMenuFlag(value: bool):
 	menuOpened = value
@@ -65,3 +75,11 @@ func _process(delta):
 			$Menu/Menu.visible = true
 			$Menu.setLock(false)
 			menuOpened = true
+			
+	if OS.get_ticks_msec() - blackoutTimestamp < blackoutTime_ms:
+		get_node(player).setInteraction(true)
+		$Blackout/Panel.show()
+	else:
+		get_node(player).setInteraction(false)
+		$Blackout/Panel.hide()
+	

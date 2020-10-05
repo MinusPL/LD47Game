@@ -5,12 +5,14 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 
+export var interactionsAvailable = 20
 export var m_iMoveSpeed = 200
 var m_vLastDirection = Vector2(0,1)
 var m_sDirection = "down"
 var initialPosition = Vector2(0,0)
 var lock_movment = false
 var interaction = false
+var initialActionsAvaiable = 20
 
 var interactionDistance = [Vector2(0,20), Vector2(0,-20), Vector2(-12, 0), Vector2(12, 0)]
 
@@ -30,12 +32,25 @@ func getCoatColor():
 	
 func resetCoatColor():
 	$Coat.modulate = Color(randf(),randf(),randf())
+	
+func resetInteractionsAvailable():
+	interactionsAvailable = initialActionsAvaiable
+	
+func decreaseInteractionsAvailable():
+	interactionsAvailable -= 1
+	
+func setInteractionsAvailable(value: int):
+	interactionsAvailable = value
+	
+func getInteractionsAvailable():
+	return interactionsAvailable
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
 	$Coat.modulate = Color(randf(),randf(),randf())
 	initialPosition = position
+	initialActionsAvaiable = interactionsAvailable
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
