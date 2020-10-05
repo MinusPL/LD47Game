@@ -20,17 +20,17 @@ var blackoutTimestamp = OS.get_ticks_msec() - blackoutTime_ms
 func _ready():
 	$Menu/Menu.visible = false
 	$Blackout/Panel.hide()
+	deadBodies.append($DeadBody)
 	Eventbus.connect("playerDied", self, "_onPlayerDied")
 
 func resetGame():
 	for deadbody in deadBodies:
 		deadbody.setItemLooted(true)
 	var chests = get_tree().get_nodes_in_group("Chest")
-	print(chests)
 	for chest in chests:
-		var index = chests.find(chest)
-		if (index == -1) or (index == (len(chests) - 1)):
-			chest.setItemLooted(false)
+		var index = deadBodies.find(chest)
+		if (index == -1) or (index == (len(deadBodies) - 1)):
+			chest.resetItems()
 			
 	get_node(player).teleport(get_node(player).getInitialPosition(), "down")
 	get_node(player).resetCoatColor()

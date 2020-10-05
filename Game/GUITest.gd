@@ -57,6 +57,7 @@ func _onInteraction(object):
 			player.setInteraction(true)
 			inventoryLocked = true
 			get_parent().setObjectDescriptionFlag(true)
+			get_parent().setInventoryOpen(true)
 			$CanvasLayer/DialogueContainer.show()
 	else:
 		Eventbus.emit_signal("playerDied")
@@ -121,6 +122,7 @@ func process_obj_description():
 					player.setInteraction(false)
 					inventoryLocked = false
 					get_parent().setObjectDescriptionFlag(false)
+					get_parent().setInventoryOpen(false)
 					$CanvasLayer/DialogueContainer.hide()
 					lock_timestamp = OS.get_ticks_msec()
 	elif obj_description_state == DescriptionState.ADD_ITEM:
@@ -139,6 +141,7 @@ func process_obj_description():
 				inventoryLocked = false
 				player.setInteraction(false)
 				get_parent().setObjectDescriptionFlag(false)
+				get_parent().setInventoryOpen(false)
 				lock_timestamp = OS.get_ticks_msec()
 				$CanvasLayer/DialogueContainer.hide()
 	

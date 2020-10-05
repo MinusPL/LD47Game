@@ -18,6 +18,10 @@ func _ready():
 func clearChest():
 	items.clear()
 
+func resetItems():
+	itemLooted = false
+	items.append(item_id)
+
 func getFlavourText():
 	return flavourText
 	
