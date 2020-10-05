@@ -28,22 +28,27 @@ func _ready():
 	$CanvasLayer/Inventory.hide()
 
 func _onInteraction(object):
-	if object.is_in_group("NPC"):
-		$CanvasLayer/DialogueContainer/NameBackground/Label.text = object.getName()
-		$CanvasLayer/DialogueContainer/DialogueText.text = object.getDesc()
-		npc_interaction_state = InteractionState.DESCRIPTION
-		current_interactable = object
-		player.setInteraction(true)
-		inventoryLocked = true
-		$CanvasLayer/DialogueContainer.show()
+	print(player.getInteractionsAvailable())
+	if player.getInteractionsAvailable() > 0:
+		if object.is_in_group("NPC"):
+			$CanvasLayer/DialogueContainer/NameBackground/Label.text = object.getName()
+			$CanvasLayer/DialogueContainer/DialogueText.text = object.getDesc()
+			npc_interaction_state = InteractionState.DESCRIPTION
+			current_interactable = object
+			player.setInteraction(true)
+			inventoryLocked = true
+			$CanvasLayer/DialogueContainer.show()
+		else:
+			player.decreaseInteractionsAvailable()
+			current_interactable = object
+			obj_description_state = DescriptionState.DESCRIPTION
+			lock_timestamp = OS.get_ticks_msec()
+			player.setInteraction(true)
+			inventoryLocked = true
+			get_parent().setObjectDescriptionFlag(true)
+			$CanvasLayer/DialogueContainer.show()
 	else:
-		current_interactable = object
-		obj_description_state = DescriptionState.DESCRIPTION
-		lock_timestamp = OS.get_ticks_msec()
-		player.setInteraction(true)
-		inventoryLocked = true
-		get_parent().setObjectDescriptionFlag(true)
-		$CanvasLayer/DialogueContainer.show()
+		Eventbus.emit_signal("playerDied")
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -156,6 +161,7 @@ func process_interaction():
 				menu_option = 0
 				npc_interaction_state = InteractionState.MAIN
 			else:
+				player.decreaseInteractionsAvailable()
 				npc_interaction_state = InteractionState.ANSWER
 	elif npc_interaction_state == InteractionState.ANSWER:
 		$CanvasLayer/DialogueContainer/DialogueText.text = current_interactable.getQuestions().values()[menu_option]
@@ -177,6 +183,7 @@ func process_interaction():
 				menu_option += 1
 			if Input.is_action_just_pressed("ui_accept"):
 				item_slots[menu_option].setActiveFlag(false)
+				player.decreaseInteractionsAvailable()
 				npc_interaction_state = InteractionState.INVENTORY_ANSWER
 		if Input.is_action_just_pressed("ui_cancel"):
 			item_slots[menu_option].setActiveFlag(false)
@@ -191,7 +198,7 @@ func process_interaction():
 		if Input.is_action_just_pressed("ui_accept"):
 			npc_interaction_state = InteractionState.INVENTORY
 	elif npc_interaction_state == InteractionState.ACCUSATION:
-		print("Interaction")
+		player.setInteractionAvailable(0)
 		npc_interaction_state = InteractionState.MAIN
 	elif npc_interaction_state == InteractionState.EXIT:
 		current_interactable = null
