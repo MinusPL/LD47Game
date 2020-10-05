@@ -13,7 +13,6 @@ var items = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Sprite.modulate = Color(0.0,0.0,1.0,1.0)
 	items.append(item_id)
 
 func clearChest():
@@ -23,14 +22,19 @@ func getFlavourText():
 	return flavourText
 	
 func getName():
-	print(items)
-	return flavourText + " " + Items.itemDictionary[items[0]].itemName
+	return nameText
+
+func getItemName():
+	return Items.itemDictionary[items[0]].itemName
 	
 func getItems():
 	return items
 	
 func isItemLooted():
 	return itemLooted
+	
+func isChestEmpty():
+	return len(items) == 0
 	
 func setItemLooted(flag):
 	itemLooted = flag

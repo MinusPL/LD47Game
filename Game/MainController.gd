@@ -10,6 +10,8 @@ export (NodePath) var player = null
 export var knifeId = 0
 
 var menuOpened = false
+var inventoryOpen = false
+var objectDescriptionShown = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Menu/Menu.visible = false
@@ -46,9 +48,19 @@ func closeMenu():
 func setMenuFlag(value: bool):
 	menuOpened = value
 
+func getMenuFlag():
+	return menuOpened
+	
+func setInventoryOpen(value: bool):
+	inventoryOpen = value
+	
+	
+func setObjectDescriptionFlag(value):
+	objectDescriptionShown = value
+
 func _process(delta):
-	if !menuOpened:
-		if Input.is_action_just_pressed("ui_cancel"):
+	if !menuOpened and not inventoryOpen:
+		if Input.is_action_just_pressed("ui_menu"):
 			get_node(player).setInteraction(true)
 			$Menu/Menu.visible = true
 			$Menu.setLock(false)
